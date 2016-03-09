@@ -6,6 +6,9 @@ if(!defined('SYSPATH'))die ('Request not found!');
     function load_sidebar(){
         require ('widget/sidebar.php');
     }
+    function load_toper($widget){
+        require ('widget/'.$widget.'.php');
+    }
     function load_widget($widget){
         require ('widget/'.$widget.'.php');
     }

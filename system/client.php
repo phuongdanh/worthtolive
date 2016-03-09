@@ -3,7 +3,7 @@
         return isset($_GET[$key]) ? $_GET[$key] : false;
     }
     function input_post($key){
-        return isset($_POST['$key']) ? $_POST['key'] : false;
+        return isset($_POST[$key]) ? $_POST[$key] : false;
     }
    
 ?>

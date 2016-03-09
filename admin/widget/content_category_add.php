@@ -1,20 +1,28 @@
-<div id="content">
-    <div class="page-header">
-        <div class="container-fluid">
-            <div class="pull-right"><a href="#" data-toggle="tooltip" title="Add New" class="btn btn-primary">
-                    <i class="fa fa-plus"></i></a> 
-                <a href="#" data-toggle="tooltip" title="Rebuild" class="btn btn-default">
-                    <i class="fa fa-refresh"></i>
-                </a>
-                <button type="button" data-toggle="tooltip" title="Delete" class="btn btn-danger" onclick="confirm('Are you sure?') ? $('#form-category').submit() : false;"><i class="fa fa-trash-o"></i></button>
-            </div>
-            <h1>Categories</h1>
-            <ul class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Categories</a></li>
-            </ul>
-        </div>
-    </div>
+<?php
+require 'db/db_category.php';
+if(isset($_POST['save'])){
+    $action = input_post('Category_add');
+    if($action == 'Category_add2'){
+        $data = array(
+            'cate_title' => input_post('cate_title'),
+            'cate_slug' => input_post('cate_slug'),
+            'cate_keywords' => input_post('cate_keywords'),
+            'cate_description' => input_post('cate_des'),
+            'cate_robots' => input_post('cate_robots'),
+            );
+        $flag = $cate_object->add('categories',$data);
+        if($flag){
+            echo "success";
+            die();
+        }else{
+            echo "Failure";
+            die();
+        }
+    }
+}
+?>
+
+
     <div class="container-fluid">
         <div class="panel panel-default">
             <div class="panel-heading">
@@ -27,34 +35,42 @@
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab-general">
+                            <input value="Category_add2" name="Category_add" type="hidden">
                                     <div class="form-group required">
-                                        <label class="col-sm-2 control-label" for="input-name1">Category Name</label>
+                                        <label class="col-sm-2 control-label" for="input-name1">Category title</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="category_description[1][name]" value="" placeholder="Category Name" id="input-name1" class="form-control" />
+                                            <input type="text" name="cate_title" value="" placeholder="Category title" class="form-control" />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label" for="input-description1">Description</label>
                                         <div class="col-sm-10">
-                                            <textarea name="category_description[1][description]" placeholder="Description" id="input-description1" class="form-control"></textarea>
+                                            <textarea name="cate_des" placeholder="Description" id="input-description1" class="form-control"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group required">
                                         <label class="col-sm-2 control-label" for="input-meta-title1">Slug</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="category_description[1][meta_title]" value="" placeholder="Meta Tag Title" id="input-meta-title1" class="form-control" />
+                                            <input type="text" name="cate_slug" value="" placeholder="Meta Tag Title" id="input-meta-title1" class="form-control" />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label" for="input-meta-description1">Keywords</label>
                                         <div class="col-sm-10">
-                                            <input type="text" name="category_description[1][meta_title]" value="" placeholder="Meta Tag Title" id="input-meta-title1" class="form-control" />
+                                            <input type="text" name="cate_keyword" value="" placeholder="Meta Tag Title" id="input-meta-title1" class="form-control" />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label" for="input-meta-keyword1">Robots</label>
                                         <div class="col-sm-10">
-                                            guguig<textarea name="category_description[1][meta_keyword]" rows="5" placeholder="Meta Tag Keywords" id="input-meta-keyword1" class="form-control"></textarea>
+                                            <textarea name="cate_robot" rows="5" placeholder="Meta Tag Keywords" id="input-meta-keyword1" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                     <div class="form-group">
+                                        <div class="col-md-2"></div>
+                                        <div class="col-sm-10">
+                                            <button name="save" type="submit" value="submit" class="btn btn-danger">Save</button>
+                                            <button name="reset" type="reset" value="reset" class="btn btn-danger">Reset</button>
                                         </div>
                                     </div>
                         </div>
