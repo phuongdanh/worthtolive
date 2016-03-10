@@ -17,7 +17,9 @@ and open the template in the editor.
         
         require SYSPATH.'admin.php';
         
+        
         if(file_exists('action/'.$action.'.php')){
+            
             require SYSPATH.'database.php';
             $object = new process();
             require 'action/'.$action.'.php';

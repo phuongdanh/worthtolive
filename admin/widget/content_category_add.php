@@ -1,5 +1,7 @@
 <?php
 require 'db/db_category.php';
+require SYSPATH.'validate.php';
+$error = array();
 if(isset($_POST['save'])){
     $action = input_post('Category_add');
     if($action == 'Category_add2'){
@@ -10,14 +12,28 @@ if(isset($_POST['save'])){
             'cate_description' => input_post('cate_des'),
             'cate_robots' => input_post('cate_robots'),
             );
-        $flag = $cate_object->add('categories',$data);
-        if($flag){
-            echo "success";
-            die();
+        //Xu lu validate du lieu
+       
+        if($valid->valid_is_empty($data['cate_title'])){
+            $error['cate_title'] = 'You must enter title';
         }else{
-            echo "Failure";
-            die();
+            //Kiem tra xem chung da ton tai trong CSDL chua
+            
         }
+        if(!$valid->valid_is_slug($data['cate_slug'])){
+            $error['cate_slug'] = 'Unvalid slug';
+        }else{
+            
+        }
+        
+//        $flag = $cate_object->add('categories',$data);
+//        if($flag){
+//            echo "success";
+//            die();
+//        }else{
+//            echo "Failure";
+//            die();
+//        }
     }
 }
 ?>
@@ -40,6 +56,9 @@ if(isset($_POST['save'])){
                                         <label class="col-sm-2 control-label" for="input-name1">Category title</label>
                                         <div class="col-sm-10">
                                             <input type="text" name="cate_title" value="" placeholder="Category title" class="form-control" />
+                                            <?php 
+                                                echo $valid->show_error($error,'cate_title');
+                                            ?>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -52,6 +71,9 @@ if(isset($_POST['save'])){
                                         <label class="col-sm-2 control-label" for="input-meta-title1">Slug</label>
                                         <div class="col-sm-10">
                                             <input type="text" name="cate_slug" value="" placeholder="Meta Tag Title" id="input-meta-title1" class="form-control" />
+                                             <?php 
+                                                echo $valid->show_error($error,'cate_slug');
+                                            ?>
                                         </div>
                                     </div>
                                     <div class="form-group">
