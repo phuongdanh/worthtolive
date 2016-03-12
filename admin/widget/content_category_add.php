@@ -1,41 +1,9 @@
 <?php
-require 'db/db_category.php';
 require SYSPATH.'validate.php';
 $error = array();
-if(isset($_POST['save'])){
-    $action = input_post('Category_add');
-    if($action == 'Category_add2'){
-        $data = array(
-            'cate_title' => input_post('cate_title'),
-            'cate_slug' => input_post('cate_slug'),
-            'cate_keywords' => input_post('cate_keywords'),
-            'cate_description' => input_post('cate_des'),
-            'cate_robots' => input_post('cate_robots'),
-            );
-        //Xu lu validate du lieu
-       
-        if($valid->valid_is_empty($data['cate_title'])){
-            $error['cate_title'] = 'You must enter title';
-        }else{
-            //Kiem tra xem chung da ton tai trong CSDL chua
-            
-        }
-        if(!$valid->valid_is_slug($data['cate_slug'])){
-            $error['cate_slug'] = 'Unvalid slug';
-        }else{
-            
-        }
-        
-//        $flag = $cate_object->add('categories',$data);
-//        if($flag){
-//            echo "success";
-//            die();
-//        }else{
-//            echo "Failure";
-//            die();
-//        }
-    }
-}
+require 'db/db_category.php';
+
+
 ?>
 
 

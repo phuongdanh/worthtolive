@@ -111,7 +111,12 @@ class process {
         $sql = 'DELETE FROM '.$table.' WHERE '.$idField.'='.(int)$idValue.';';
         return mysqli_query($this->_conn, $sql);
     }
-
+    
+    function exist($table,$field,$value,$field_id){
+        $count = $this->count('SELECT count('.$field_id.') AS num_count FROM '.$table.' WHERE '.$field.' = \''.$value.'\'', 'num_count');
+        return ($count > 0) ? true : false;
+    }
+    
     //Ham ngat ket noi
     function disconnect() {
         if ($this->_conn) {
