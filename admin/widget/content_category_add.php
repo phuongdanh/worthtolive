@@ -19,7 +19,7 @@ require 'db/db_category.php';
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane active" id="tab-general">
-                            <input value="Category_add2" name="Category_add" type="hidden">
+                            <input value="Category_add" name="type_action" type="hidden">
                                     <div class="form-group required">
                                         <label class="col-sm-2 control-label" for="input-name1">Category title</label>
                                         <div class="col-sm-10">
