@@ -58,7 +58,7 @@ if(!defined('SYSPATH'))die ('Request not found!');
                 $page['html'] .= '<li><a href="'.str_replace('{page}', ($page['current_page'] + 1), $link).'">Next</a></li>';
             }
             
-            $page['html'] .= '</ul></div><div class="col-sm-6 text-right">Showing 1 to 20 of 38 (2 Pages)</div>';
+           
         }
         
         

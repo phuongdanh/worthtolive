@@ -68,6 +68,7 @@ $cate_list = $cate_object->get_list2($page['start'], $page['limit']);
                 <?php
                 echo $page['html'];
                 ?>
+                </ul></div><div class="col-sm-6 text-right">Showing 1 to <?php echo $page['limit'];?> of <?php echo $page['total_record'];?> (<?php echo $page['total_page'];?> Pages)</div>
 <!--                    <div class="col-sm-6 text-left"><ul class="pagination"><li class="active"><span>1</span></li><li><a href="#">2</a></li><li><a href="#">&gt;</a></li><li><a href="#">&gt;|</a></li></ul></div>
                 <div class="col-sm-6 text-right">Showing 1 to 20 of 38 (2 Pages)</div>-->
             </div>

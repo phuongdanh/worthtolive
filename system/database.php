@@ -116,6 +116,10 @@ class process {
         $count = $this->count('SELECT count('.$field_id.') AS num_count FROM '.$table.' WHERE '.$field.' = \''.$value.'\'', 'num_count');
         return ($count > 0) ? true : false;
     }
+    function edit_exist($table,$field,$value,$field_id,$id){
+        $count = $this->count('SELECT count('.$field_id.') AS num_count FROM '.$table.' WHERE '.$field.' = \''.$value.'\' and '.$field_id.' <> '.(int)$id, 'num_count');
+        return ($count > 0) ? true : false;
+    }
     
     //Ham ngat ket noi
     function disconnect() {

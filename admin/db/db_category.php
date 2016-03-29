@@ -56,6 +56,7 @@ if (isset($_POST['save'])) {
     }/*-----------------------------ket thuc phan them -*/
     if ($action == 'Category_edit') { /*--------------------------------------cai nay la phan edit ban nhe--------*/
         $data1 = array(
+            'cate_id' => input_post('cate_id'),
             'cate_title' => input_post('cate_title'),
             'cate_slug' => input_post('cate_slug'),
             'cate_keywords' => input_post('cate_keywords'),
@@ -64,17 +65,17 @@ if (isset($_POST['save'])) {
         );
         //Xu lu validate du lieu
 
-        if ($valid->valid_is_empty($data['cate_title'])) {
+        if ($valid->valid_is_empty($data1['cate_title'])) {
             $error['cate_title'] = 'You must enter title';
-        } else if ($cate_object->exist('categories', 'cate_title', $data1['cate_title'], 'cate_id')) {
+        } else if ($cate_object->edit_exist('categories', 'cate_title', $data1['cate_title'], 'cate_id',$data1['cate_id'])) {
             //Kiem tra xem chung da ton tai trong CSDL chua
             $error['cate_title'] = 'Title da ton tai';
         }
-        if (!$valid->valid_is_slug($data['cate_slug'])) {
+        if (!$valid->valid_is_slug($data1['cate_slug'])) {
             $error['cate_slug'] = 'Unvalid slug';
-        } else if ($cate_object->exist('categories', 'cate_slug', $data1['cate_slug'], 'cate_id')) {
+        } else if ($cate_object->edit_exist('categories', 'cate_slug', $data1['cate_slug'], 'cate_id',$data1['cate_id'])) {
             //Kiem tra xem chung da ton tai trong CSDL chua
-            $error['cate_title'] = 'Slug da ton tai';
+            $error['cate_slug'] = 'Slug da ton tai';
         }
         if (empty($error)) {
             $flag = $cate_object->update('categories', $data1,'cate_id',$id);
