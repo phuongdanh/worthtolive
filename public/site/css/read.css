@@ -238,6 +238,9 @@ transform: rotate(360deg);
 .content_right .web{
 	margin-top: 20px;
 }
+.content_right .web .last{
+    margin-top: 20px;
+}
 .modal-content{
 	width: 400px;
 	margin:0 auto;

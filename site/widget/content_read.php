@@ -39,38 +39,39 @@
                 <li><a href="#">Pathankot attack: Credible information that plot hatched in Pakistan,...</a></li>
             </ul>
             <div class="row line_relate">
-                <div class="col-md-3  col-sm-3 item">
+                <div class="col-md-3  col-sm-3 col-xs-6 item">
                     <img src="<?php echo $pathforsite; ?>images/img_27.jpg">
                     <span><a href="#">Lorem ipsum dolor sit amet, consectetur</a></span>
                 </div>
-                <div class="col-md-3 col-sm-3  item">
+                <div class="col-md-3 col-sm-3 col-xs-6 item">
                     <img src="<?php echo $pathforsite; ?>images/img_28.jpg">
                     <span><a href="#">Lorem ipsum dolor sit amet, consectetur</a></span>
                 </div>
-                <div class="col-md-3 col-sm-3 item">
+                <div class="col-md-3 col-sm-3 col-xs-6 item">
                     <img src="<?php echo $pathforsite; ?>images/img_29.jpg">
                     <span><a href="#">Lorem ipsum dolor sit amet, consectetur</a></span>
                 </div>
-                <div class="col-md-3 col-sm-3  item">
+                <div class="col-md-3 col-sm-3 col-xs-6  item">
                     <img src="<?php echo $pathforsite; ?>images/img_39.jpg">
                     <span><a href="#">Lorem ipsum dolor sit amet, consectetur</a></span>
                 </div>
-                <div class="col-md-3  col-sm-3 item">
+                <div class="col-md-3  col-sm-3 col-xs-6 item">
                     <img src="http://img.v3.news.zdn.vn/w660/Uploaded/nutmjz/2014_02_25/my3Untitled.jpg">
                     <span><a href="#">Lorem ipsum dolor sit amet, consectetur</a></span>
                 </div>
-                <div class="col-md-3  col-sm-3 item">
+                <div class="col-md-3  col-sm-3 col-xs-6 item">
                     <img src="<?php echo $pathforsite; ?>images/img_36.jpg">
                     <span><a href="#">Lorem ipsum dolor sit amet, consectetur</a></span>
                 </div>
-                <div class="col-md-3 col-sm-3  item">
+                <div class="col-md-3 col-sm-3  col-xs-6 item">
                     <img src="<?php echo $pathforsite; ?>images/img_35.jpg">
                     <span><a href="#">Lorem ipsum dolor sit amet, consectetur</a></span>
                 </div>
-                <div class="col-md-3  col-sm-3 item">
+                <div class="col-md-3  col-sm-3 col-xs-6 item">
                     <img src="<?php echo $pathforsite; ?>images/img_27.jpg"s>
                     <span><a href="#">Lorem ipsum dolor sit amet, consectetur</a></span>
                 </div>
+                <div class="clr"></div>
             </div>
 
         </div>
@@ -112,17 +113,17 @@
         <hr>
         <div class="list_item">
             <ul>
-                <li class="col-md-12 col-sm-4 col-xs-12">
+                <li class="col-md-12 col-sm-4 col-xs-4">
                     <img src="<?php echo $pathforsite; ?>images/most1.cms">
                     <span><a href="#">Bajirao, Mastani triumph, Bhansali rules at Filmfare</a><br><i>&nbsp;&nbsp;&nbsp;Date: 12/31/2016</i></span>
                     <div class="clr"></div>
                 </li>
-                <li class="col-md-12 col-sm-4 col-xs-12">
+                <li class="col-md-12 col-sm-4 col-xs-4">
                     <img src="<?php echo $pathforsite; ?>images/most2.jpg">
                     <span><a href="#">Bajirao, Mastani triumph, Bhansali rules at Filmfare</a><br><i>&nbsp;&nbsp;&nbsp;Date: 12/31/2016</i></span>
                     <div class="clr"></div>
                 </li>
-                <li class="col-md-12 col-sm-4 col-xs-12">
+                <li class="col-md-12 col-sm-4 col-xs-4">
                     <img src="<?php echo $pathforsite; ?>images/most3.cms">
                     <span><a href="#">Bajirao, Mastani triumph, Bhansali rules at Filmfare</a><br><i>&nbsp;&nbsp;&nbsp;Date: 12/31/2016</i></span>
                     <div class="clr"></div>
@@ -130,29 +131,29 @@
 
             </ul>
             <div class="clr"></div>
-            <div class="col-md-12 col-sm-6 item">
+            <div class="col-md-12 col-sm-6 col-xs-6 item">
                 <span><a href="#">Bajirao, Mastani triumph, Bhansali rules at Filmfare</a></span>
                 <img src="<?php echo $pathforsite; ?>images/most4.jpg">
                 <i>&nbsp;&nbsp;&nbsp;Date: 20/12/2016</i>
             </div>
-            <div class="col-md-12 col-sm-6 item">
+            <div class="col-md-12 col-sm-6 col-xs-6 item">
                 <span><a href="#">Bajirao, Mastani triumph, Bhansali rules at Filmfare</a></span>
                 <img src="<?php echo $pathforsite; ?>images/most5.jpg">
                 <i>&nbsp;&nbsp;&nbsp;Date: 20/12/2016</i>
             </div>
             <div class="clr"></div>
             <ul>
-                <li  class="col-md-12 col-sm-4 col-xs-12">
+                <li  class="col-md-12 col-sm-4 col-xs-4">
                     <img src="<?php echo $pathforsite; ?>images/most7.jpg">
                     <span><a href="#">Bajirao, Mastani triumph, Bhansali rules at Filmfare</a><br><i>&nbsp;&nbsp;&nbsp;Date: 12/31/2016</i></span>
                     <div class="clr"></div>
                 </li>
-                <li  class="col-md-12 col-sm-4 col-xs-12">
+                <li  class="col-md-12 col-sm-4 col-xs-4">
                     <img src="<?php echo $pathforsite; ?>images/most8.jpg">
                     <span><a href="#">Bajirao, Mastani triumph, Bhansali rules at Filmfare</a><br><i>&nbsp;&nbsp;&nbsp;Date: 12/31/2016</i></span>
                     <div class="clr"></div>
                 </li>
-                <li  class="col-md-12 col-sm-4 col-xs-12">
+                <li  class="col-md-12 col-sm-4 col-xs-4">
                     <img src="<?php echo $pathforsite; ?>images/most9.jpg">
                     <span><a href="#">Bajirao, Mastani triumph, Bhansali rules at Filmfare</a><br><i>&nbsp;&nbsp;&nbsp;Date: 12/31/2016</i></span>
                     <div class="clr"></div>
@@ -164,21 +165,21 @@
 
 
         <div class="web">
-            <span class="cate">from around the web</span><div class="clr"></div>
+            <span class="cate last">from around the web</span><div class="clr"></div>
             <hr>
             <div class="list_item">
                 <ul>
-                    <li class="col-md-12 col-sm-4 col-xs-12">
+                    <li class="col-md-12 col-sm-4 col-xs-4">
                         <img src="<?php echo $pathforsite; ?>images/most1.cms">
                         <span><a href="#">Bajirao, Mastani triumph, Bhansali rules at Filmfare</a><br><i>&nbsp;&nbsp;&nbsp;Date: 12/31/2016</i></span>
                         <div class="clr"></div>
                     </li>
-                    <li class="col-md-12 col-sm-4 col-xs-12">
+                    <li class="col-md-12 col-sm-4 col-xs-4">
                         <img src="<?php echo $pathforsite; ?>images/most2.jpg">
                         <span><a href="#">Bajirao, Mastani triumph, Bhansali rules at Filmfare</a><br><i>&nbsp;&nbsp;&nbsp;Date: 12/31/2016</i></span>
                         <div class="clr"></div>
                     </li>
-                    <li class="col-md-12 col-sm-4 col-xs-12">
+                    <li class="col-md-12 col-sm-4 col-xs-4">
                         <img src="<?php echo $pathforsite; ?>images/most3.cms">
                         <span><a href="#">Bajirao, Mastani triumph, Bhansali rules at Filmfare</a><br><i>&nbsp;&nbsp;&nbsp;Date: 12/31/2016</i></span>
                         <div class="clr"></div>
@@ -187,7 +188,7 @@
                 </ul>
             </div>
             <!-- Unit2 -->
-            <ins class="adsbygoogle"
+<!--            <ins class="adsbygoogle"
                  style="display:block"
                  data-ad-client="ca-pub-3363836821785389"
                  data-ad-slot="8979464152"
@@ -195,7 +196,7 @@
             <script>
                 (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
-            <script src="http://weather.webmart.net/e/91888417"></script>
+            <script src="http://weather.webmart.net/e/91888417"></script>-->
         </div>
 
     </div>

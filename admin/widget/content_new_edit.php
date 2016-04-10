@@ -19,7 +19,8 @@ $data = $new_object->get_row('SELECT * FROM news WHERE news_id = '.$news_id);
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane active" id="tab-general">
-                        <input value="new_add" name="type_action" type="hidden">
+                        <input value="new_edit" name="type_action" type="hidden">
+                        <input value="<?php echo $data['news_id'];?>" name="news_id" type="hidden">
                         <div class="form-group required">
                             <label class="col-sm-2 control-label">News title</label>
                             <div class="col-sm-10">
@@ -32,7 +33,7 @@ $data = $new_object->get_row('SELECT * FROM news WHERE news_id = '.$news_id);
                         <div class="form-group required">
                             <label class="col-sm-2 control-label">Slug</label>
                             <div class="col-sm-10">
-                                <input type="text" name="news_slug" value="" placeholder="News slug" class="form-control" />
+                                <input type="text" name="news_slug" value="<?php echo $data['news_slug'];?>" placeholder="News slug" class="form-control" />
                                 <?php
                                 echo $valid->show_error($error, 'news_slug');
                                 ?>
@@ -41,7 +42,7 @@ $data = $new_object->get_row('SELECT * FROM news WHERE news_id = '.$news_id);
                         <div class="form-group required">
                             <label class="col-sm-2 control-label" for="input-name1">News content</label>
                             <div class="col-sm-10">
-                                <textarea type="text" name="news_content" value="" id="input-content" class="form-control"></textarea>
+                                <textarea type="text" name="news_content" value="" id="input-content" class="form-control"><?php echo $data['news_content'];?></textarea>
                                 <?php
                                 echo $valid->show_error($error, 'news_content');
                                 ?>
@@ -50,6 +51,7 @@ $data = $new_object->get_row('SELECT * FROM news WHERE news_id = '.$news_id);
                         <div class="form-group required">
                             <label class="col-sm-2 control-label">Images</label>
                             <div class="col-sm-10">
+                                <input type="hidden" name="current_image" value="<?php echo $data['news_image'];?>">
                                 <input type="file" name="news_image" value="" class="form-control"/>
                                 <?php
                                     echo $valid->show_error($error, 'news_image');
@@ -59,14 +61,13 @@ $data = $new_object->get_row('SELECT * FROM news WHERE news_id = '.$news_id);
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Description</label>
                             <div class="col-sm-10">
-                                <textarea rows="5" name="news_des" placeholder="Description"  class="form-control"></textarea>
+                                <textarea rows="5" name="news_des" placeholder="Description"  class="form-control"><?php echo $data['news_description'];?></textarea>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Category</label>
                             <div class="col-md-10">
                                 <select class="form-control" name="cate_id">
-                                    
                                     <?php foreach ($cates as $cate => $value): ?>
                                         <option value="<?php echo $value['cate_id']; ?>"><?php echo $value['cate_title']; ?></option>
                                         <?php
@@ -80,13 +81,13 @@ $data = $new_object->get_row('SELECT * FROM news WHERE news_id = '.$news_id);
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Keywords</label>
                             <div class="col-sm-10">
-                                <input type="text" name="news_keyword" value="" placeholder="News keywords" id="input-meta-title1" class="form-control" />
+                                <input type="text" name="news_keyword" value="<?php echo $data['news_keywords'];?>" placeholder="News keywords" id="input-meta-title1" class="form-control" />
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Robots</label>
                             <div class="col-sm-10">
-                                <textarea name="news_robot" rows="5" placeholder="News robots" id="input-meta-keyword1" class="form-control"></textarea>
+                                <textarea name="news_robot" rows="5" placeholder="News robots" id="input-meta-keyword1" class="form-control"><?php echo $data['news_robots'];?></textarea>
                             </div>
                         </div>
                         <div class="form-group">

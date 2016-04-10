@@ -22,7 +22,7 @@ $total_record = $new_object->count('SELECT count(*) AS num_count FROM news', 'nu
 if (isset($_POST['save'])) {
     $action = input_post('type_action');
     if ($action == 'new_add') { /*--------------------------------------cai nay la phan them ban nhe--------*/
-         if ($_FILES['news_image']['error'] > 0)
+        if ($_FILES['news_image']['error'] > 0)
             {
                 $error['news_image'] = 'Image is not fit!';
             }
@@ -31,7 +31,7 @@ if (isset($_POST['save'])) {
                 $path = '/public/site/images/'.$cate_id.'/'.$_FILES['news_image']['name'];
                 // Upload file
                 if(move_uploaded_file($_FILES['news_image']['tmp_name'],'../'.$path)){
-                    echo 'File Uploaded';
+                    
                 }else{
                     $error['news_image'] = 'Image is not uploaded!';
                 }
@@ -54,7 +54,7 @@ if (isset($_POST['save'])) {
             //Kiem tra xem chung da ton tai trong CSDL chua
             $error['news_title'] = 'Title da ton tai';
         }
-        if (strlen($data['news_content'])) {
+        if (strlen($data['news_content']) < 500) {
             $error['news_content'] = 'Content is very short, Minimize is 1000 characters!';
         }
         if (!$valid->valid_is_slug($data['news_slug'])) {
@@ -75,36 +75,64 @@ if (isset($_POST['save'])) {
         }
     }/*-----------------------------ket thuc phan them -*/
     if ($action == 'new_edit') { /*--------------------------------------cai nay la phan edit ban nhe--------*/
+        $id = input_post('news_id');
+        if(input_post('news_image') != NULL){
+           if ($_FILES['news_image']['error'] > 0)
+            {
+                $error['news_image'] = 'Image is not fit!';
+            }
+            else{
+                $cate_id = input_post('cate_id');
+                $path = '/public/site/images/'.$cate_id.'/'.$_FILES['news_image']['name'];
+                // Upload file
+                if(move_uploaded_file($_FILES['news_image']['tmp_name'],'../'.$path)){
+                    $real_image = $path;
+                }else{
+                    $error['news_image'] = 'Image is not uploaded!';
+                }
+            } 
+        }else{
+            $real_image = input_post('current_image');
+        }
+        
         $data1 = array(
             'news_title' => input_post('news_title'),
             'news_slug' => input_post('news_slug'),
             'news_keywords' => input_post('news_keywords'),
             'news_description' => input_post('news_des'),
             'news_robots' => input_post('news_robots'),
+            'news_content' => input_post('news_content'),
+            'news_image' => $real_image,
+            'news_id' => $id,
         );
         //Xu lu validate du lieu
 
-        if ($valid->valid_is_empty($data1['news_title'])) {
-            $error['news_title'] = 'You must enter title';
-        } else if ($news_object->edit_exist('news', 'news_title', $data1['news_title'], 'news_id',$data1['news_id'])) {
-            //Kiem tra xem chung da ton tai trong CSDL chua
-            $error['news_title'] = 'Title da ton tai';
-        }
-        if (!$valid->valid_is_slug($data1['news_slug'])) {
-            $error['news_slug'] = 'Unvalid slug';
-        } else if ($news_object->edit_exist('news', 'news_slug', $data1['news_slug'], 'news_id',$data1['news_id'])) {
-            //Kiem tra xem chung da ton tai trong CSDL chua
-            $error['news_slug'] = 'Slug da ton tai';
-        }
+//        if ($valid->valid_is_empty($data1['news_title'])) {
+//            $error['news_title'] = 'You must enter title';
+//        } else if ($new_object->edit_exist('news', 'news_title', $data1['news_title'],'news_id',$data1['news_id'])) {
+//            //Kiem tra xem chung da ton tai trong CSDL chua
+//            $error['news_title'] = 'Title da ton tai';
+//        }
+//        if (!$valid->valid_is_slug($data1['news_slug'])) {
+//            $error['news_slug'] = 'Unvalid slug';
+//        } else if ($new_object->edit_exist('news', 'news_slug', $data1['news_slug'], 'news_id',$data1['news_id'])) {
+//            //Kiem tra xem chung da ton tai trong CSDL chua
+//            $error['news_slug'] = 'Slug da ton tai';
+//        }
+//        if (strlen($data1['news_content']) < 500) {
+//            $error['news_content'] = 'Content is very short, Minimize is 1000 characters!';
+//        }
         if (empty($error)) {
             $flag = $new_object->update('news', $data1,'news_id',$id);
             if ($flag) {
                 echo '<script language="javascript">';
                     echo 'alert("A new news have just been added!");';
-                    echo 'window.location.assign("admin/index.php?action=new");';
+                    echo 'window.location.assign("admin/index.php?action=news");';
                 echo '</script>';
                 die();
-            } 
+            }else{
+                echo 'It was not updated!';
+            }
         }
     }/*-----------------------------ket thuc phan sua-----------*/
     
