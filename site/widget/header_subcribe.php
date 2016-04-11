@@ -11,5 +11,4 @@
         <script type="text/javascript" src="<?php echo $pathforsite; ?>js/jquery.js"></script>
         <script type="text/javascript" src="<?php echo $pathforsite; ?>js/bootstrap.js"></script>
         <script type="text/javascript" src="<?php echo $pathforsite; ?>js/custome.js"></script>
-        <script type="text/javascript" src="<?php echo $pathforsite; ?>js/jquery.validate.min.js"></script>
     </head>

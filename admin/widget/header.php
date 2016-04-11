@@ -2,8 +2,9 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
     <head>
+        
         <meta charset="UTF-8" />
-        <title>Categories</title>
+        <title>Admin - Worthtolive</title>
         <base href="http://localhost/worthtolive/" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
         <script type="text/javascript" src="public/admin/javascript/jquery/jquery-2.1.1.min.js"></script>

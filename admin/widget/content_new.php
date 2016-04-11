@@ -14,9 +14,8 @@ $new_list = $new_object->get_list2($page['start'], $page['limit']);
             <h3 class="panel-title"><i class="fa fa-list"></i>News list</h3>
         </div>
         <div class="panel-body">
-            <form action="#" method="post" enctype="multipart/form-data" id="form-news">
-                <form>
-                </form>
+            <form action="admin/index.php?action=news_delete_multiple" method="post" enctype="multipart/form-data" id="form-news">
+               
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover">
                         <thead>
@@ -41,27 +40,26 @@ $new_list = $new_object->get_list2($page['start'], $page['limit']);
                         <tbody>
 
                             <?php foreach ($new_list as $new): ?>
-                                
+
                                 <tr>
                                     <td class="text-center">                    
-                                        <input type="checkbox" name="selected[]" value="33" />
+                                        <input type="checkbox" name="checkbox[]" value="<?php echo $new['news_id']; ?>" />
                                     </td>
-                                    <td class="text-left"><?php echo $new['news_title'];?></td>
+                                    <td class="text-left"><?php echo $new['news_title']; ?></td>
                                     <td class="text-right"><?php echo $new['cate_title']; ?></td>
-                                    <td class="text-left"><?php echo $new['add_username'];?></td>
+                                    <td class="text-left"><?php echo $new['add_username']; ?></td>
                                     <td class="text-right"><?php echo $new['created']; ?></td>
                                     <td class="text-right">
-                                        <form method="post" action="admin/index.php?action=news_delete" class="form_new">
-                                            <input type="hidden" name="news_id" value="<?php echo $new['news_id'];?>"> 
-                                            <a href="admin/index.php?action=news_edit&id=<?php echo $new['news_id'];?>" data-toggle="tooltip" title="Edit" class="btn btn-primary">
+                                        
+                                            <a href="admin/index.php?action=news_edit&id=<?php echo $new['news_id']; ?>" data-toggle="tooltip" title="Edit" class="btn btn-primary">
                                                 <i class="fa fa-pencil"></i>
                                             </a>
-                                            <button  onclick="confirm('Are you sure?') ? $(this).submit() : false;" data-toggle="tooltip" title="Delete" class="btn btn-danger">
-                                                <i class="fa fa-trash-o"></i>
-                                            </button>
-                                        </form>
-                                        
-                                        
+                                            <a href="admin/index.php?action=news_delete&id=<?php echo $new['news_id']; ?>"  onclick="confirm('Are you sure?') ? $(this).submit() : false;" data-toggle="tooltip" title="Delete" class="btn btn-danger">
+                                                    <i class="fa fa-trash-o"></i>
+                                            </a>
+                                    
+
+
                                     </td>
                                 </tr>
 
@@ -76,11 +74,11 @@ $new_list = $new_object->get_list2($page['start'], $page['limit']);
                 <?php
                 echo $page['html'];
                 ?>
-                </ul></div><div class="col-sm-6 text-right">Showing 1 to <?php echo $page['limit'];?> of <?php echo $page['total_record'];?> (<?php echo $page['total_page'];?> Pages)</div>
+                </ul></div><div class="col-sm-6 text-right">Showing 1 to <?php echo $page['limit']; ?> of <?php echo $page['total_record']; ?> (<?php echo $page['total_page']; ?> Pages)</div>
 <!--                    <div class="col-sm-6 text-left"><ul class="pagination"><li class="active"><span>1</span></li><li><a href="#">2</a></li><li><a href="#">&gt;</a></li><li><a href="#">&gt;|</a></li></ul></div>
                 <div class="col-sm-6 text-right">Showing 1 to 20 of 38 (2 Pages)</div>-->
-            </div>
         </div>
     </div>
+</div>
 </div>
 </div>

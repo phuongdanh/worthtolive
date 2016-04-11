@@ -6,7 +6,7 @@
                 <a href="#" data-toggle="tooltip" title="Rebuild" class="btn btn-default">
                     <i class="fa fa-refresh"></i>
                 </a>
-                <button type="button" data-toggle="tooltip" title="Delete" class="btn btn-danger" onclick="confirm('Are you sure?') ? $('#form-news').submit() : false;"><i class="fa fa-trash-o"></i></button>
+                <button type="button" data-toggle="tooltip" name="delete" title="Delete" class="btn btn-danger" onclick="confirm('Are you sure?') ? $('#form-news').submit() : false;"><i class="fa fa-trash-o"></i></button>
             </div>
             <h1>News</h1>
             <ul class="breadcrumb">

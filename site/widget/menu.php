@@ -1,4 +1,7 @@
-<?php if (!defined('SYSPATH')) die('Request not found!'); ?>
+<?php if (!defined('SYSPATH')) die('Request not found!'); 
+require 'site/db/db_category.php';
+$data = $cate_object->get_list("SELECT cate_id, cate_title, cate_slug FROM categories ORDER BY cate_id");
+?>
 <section>
     <div class="navbar-icon">
         <span>MENU <i class="fa fa-bars"></i></span>
@@ -6,16 +9,9 @@
     <nav class="main_menu">
         <div class="menu" id="main_menu">
             <ul class="list-inline ul_menu">
-                <li><a href="index.php?action=world">World news</a></li>
-                <li><a href="index.php?action=sport">sports</a></li>
-                <li><a href="index.php?action=tech">tech</a></li>
-                <li><a href="index.php?action=bussiness">business</a></li>
-                <li><a href="index.php?action=movie">movies</a></li>
-                <li><a href="index.php?action=enter">entertainment</a></li>
-                <li><a href="index.php?action=culture">culture</a></li>
-                <li><a href="index.php?action=book">books</a></li>
-                <li><a href="index.php?action=classified">classifieds</a></li>
-                <li><a href="index.php?action=blog">blogs</a></li>
+                <?php foreach ($data as $data):?>
+                <li><a href="index.php?action=<?php echo $data['cate_slug'];?>"><?php echo $data['cate_title'];?></a></li>
+                <?php endforeach; ?>
             </ul>
         </div>
     </nav>

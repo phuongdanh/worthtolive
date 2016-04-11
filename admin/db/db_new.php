@@ -76,7 +76,7 @@ if (isset($_POST['save'])) {
     }/*-----------------------------ket thuc phan them -*/
     if ($action == 'new_edit') { /*--------------------------------------cai nay la phan edit ban nhe--------*/
         $id = input_post('news_id');
-        if(input_post('news_image') != NULL){
+        if($_FILES['news_image']['name'] != NULL){
            if ($_FILES['news_image']['error'] > 0)
             {
                 $error['news_image'] = 'Image is not fit!';

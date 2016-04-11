@@ -16,6 +16,7 @@ and open the template in the editor.
         $action = input_get('action');
         
         require SYSPATH.'site.php';
+        require SYSPATH.'validate.php';
         
         if(file_exists('site/action/'.$action.'.php')){
             
