@@ -1,5 +1,6 @@
 <?php
 require SYSPATH.'validate.php';
+$valid = new valid();
 $error = array();
 require 'db/db_category.php';
 

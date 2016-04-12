@@ -2,6 +2,7 @@
 
 $id = input_get('id');
 require SYSPATH.'validate.php';
+$valid = new valid();
 $error = array();
 require 'db/db_category.php';
 $data = $cate_object->get_row('SELECT * FROM categories WHERE cate_id = '.$id);

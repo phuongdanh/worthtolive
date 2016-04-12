@@ -44,8 +44,10 @@ if (isset($_POST['save'])) {
             'news_keywords' => input_post('news_keywords'),
             'news_description' => input_post('news_des'),
             'news_robots' => input_post('news_robots'),
-            'news_image' => $path,
         );
+        if(isset($path)){
+            $data['news_image'] = $path;
+        }
         //Xu lu validate du lieu
 
         if ($valid->valid_is_empty($data['news_title'])) {

@@ -1,5 +1,6 @@
 <?php
 require SYSPATH . 'validate.php';
+$valid = new valid();
 $error = array();
 $news_id = input_get('id');
 require 'db/db_new.php';
