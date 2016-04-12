@@ -1,11 +1,49 @@
-<?php if (!defined('SYSPATH')) die('Request not found!'); $pathforsite = 'public/site/'; ?>
+<?php if (!defined('SYSPATH'))
+    die('Request not found!');
+$pathforsite = 'public/site/';
+?>
+<?php
+$error = array();
+$valid = new valid();
+require_once 'site/db/db_user.php';
+$user = $user_object->get_row('SELECT * FROM users WHERE user_id = 7');
+?>
+
 
 <div class="clr"></div>
 <div class="content_wrapper">
     <div class="col-md-4 col-sm-4 content_left">
-        <img src="<?php echo $pathforsite; ?>images/user1.jpg" width="100%">
-        <span>The Half Heart</span>
-        <h6>Thehalfheart@gmail.com</h6>
+        <img src="<?php echo $user['user_avatar']; ?>" width="100%">
+        <span><?php echo $user['user_name']; ?></span>
+        <h6><?php echo $user['user_email']; ?></h6>
+        <h6><?php echo $user['user_phone']; ?></h6>
+        <div class="action">
+            <button class="btn btn-default"><i class="fa fa-pencil"></i></button>
+            <button class="btn btn-default">Change password</button>
+            <button class="btn btn-default"><i class="fa fa-remove"></i></button>
+        </div>
+        <?php echo $valid->show_error($error, 'update');?>
+        <div class="edit">
+            <form method="post" action="" enctype="multipart/form-data" class="form-horizontal">
+                <input name="type_action" type="hidden" value="user_edit">
+                <input name="id" value="<?php echo $user['user_id']; ?>" type="hidden">
+                <input name="username" value="<?php echo $user['user_name']; ?>" type="text" class="form-control">
+                <?php
+                echo $valid->show_error($error, 'user_name');
+                ?>
+                <input name="email" value="<?php echo $user['user_email']; ?>" type="text" class="form-control">
+                <?php
+                echo $valid->show_error($error, 'user_email');
+                ?>
+                <input name="phone" value="<?php echo $user['user_phone']; ?>" type="text" class="form-control">
+                <?php
+                echo $valid->show_error($error, 'user_phone');
+                ?>
+                <input name="current_avatar" type="hidden" value="<?php echo $user['user_avatar']; ?>">
+                <input class="form-control" type="file" name="new_avatar">
+                <button class="btn btn-danger" type="submit" name="submit">Save</button>
+            </form>
+        </div>
     </div>
     <div class="col-md-8 cl-sm-8 content_right">
         <div id="container">
@@ -13,8 +51,8 @@
             <ul class="tabs"> 
                 <li class="active" rel="tab1"> My articles</li>
                 <li rel="tab2">Add new article</li>
-                <li rel="tab3"> Halo</li>
-                <li rel="tab4"> Portal</li>
+                <!--                <li rel="tab3"> Halo</li>
+                                <li rel="tab4"> Portal</li>-->
             </ul>
 
             <div class="tab_container"> 
@@ -113,29 +151,29 @@
                     </table>
                 </div><!-- #tab2 -->
 
-                <div id="tab3" class="tab_content"> 
-
-                    <p><img src="images/halo.jpg"> <br />
-                        <strong>
-                            Halo: Reach is the culmination of the superlative combat, sensational
-                            multiplayer, and seamless online integration that are the hallmarks
-                            of this superb series.
-                        </strong>
-                    </p>
-
-                </div><!-- #tab3 -->
-
-                <div id="tab4" class="tab_content"> 
-
-                    <p><img src="images/portal.jpg"> <br />
-                        <strong>
-                            Portal 2 is an action shooter game from Valve Software that draws 
-                            from the original formula of innovative gameplay, story, and music,
-                            which earned the original Portal more than 70 industry accolades.
-                        </strong>
-                    </p>
-
-                </div><!-- #tab4 --> 
+                <!--                <div id="tab3" class="tab_content"> 
+                
+                                    <p><img src="images/halo.jpg"> <br />
+                                        <strong>
+                                            Halo: Reach is the culmination of the superlative combat, sensational
+                                            multiplayer, and seamless online integration that are the hallmarks
+                                            of this superb series.
+                                        </strong>
+                                    </p>
+                
+                                </div> #tab3 
+                
+                                <div id="tab4" class="tab_content"> 
+                
+                                    <p><img src="images/portal.jpg"> <br />
+                                        <strong>
+                                            Portal 2 is an action shooter game from Valve Software that draws 
+                                            from the original formula of innovative gameplay, story, and music,
+                                            which earned the original Portal more than 70 industry accolades.
+                                        </strong>
+                                    </p>
+                
+                                </div> #tab4  -->
 
             </div> <!-- .tab_container --> 
 

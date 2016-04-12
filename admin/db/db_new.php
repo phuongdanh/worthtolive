@@ -57,9 +57,9 @@ if (isset($_POST['save'])) {
             $error['news_title'] = 'Title da ton tai';
         }
         if (strlen($data['news_content']) < 500) {
-            $error['news_content'] = 'Content is very short, Minimize is 1000 characters!';
+            $error['news_content'] = 'Content is very short, Minimize is 500 characters!';
         }
-        if (!$valid->valid_is_slug($data['news_slug'])) {
+        if ($valid->valid_is_slug($data['news_slug'])) {
             $error['news_slug'] = 'Unvalid slug';
         } else if ($new_object->exist('news', 'news_slug', $data['news_slug'], 'news_id')) {
             //Kiem tra xem chung da ton tai trong CSDL chua
@@ -109,26 +109,27 @@ if (isset($_POST['save'])) {
         );
         //Xu lu validate du lieu
 
-//        if ($valid->valid_is_empty($data1['news_title'])) {
-//            $error['news_title'] = 'You must enter title';
-//        } else if ($new_object->edit_exist('news', 'news_title', $data1['news_title'],'news_id',$data1['news_id'])) {
-//            //Kiem tra xem chung da ton tai trong CSDL chua
-//            $error['news_title'] = 'Title da ton tai';
-//        }
-//        if (!$valid->valid_is_slug($data1['news_slug'])) {
-//            $error['news_slug'] = 'Unvalid slug';
-//        } else if ($new_object->edit_exist('news', 'news_slug', $data1['news_slug'], 'news_id',$data1['news_id'])) {
-//            //Kiem tra xem chung da ton tai trong CSDL chua
-//            $error['news_slug'] = 'Slug da ton tai';
-//        }
-//        if (strlen($data1['news_content']) < 500) {
-//            $error['news_content'] = 'Content is very short, Minimize is 1000 characters!';
-//        }
+        if ($valid->valid_is_empty($data1['news_title'])) {
+            $error['news_title'] = 'You must enter title';
+            //Exist function in edit will be different with add
+        } else if ($new_object->edit_exist('news', 'news_title', $data1['news_title'],'news_id',$data1['news_id'])) {
+            //Kiem tra xem chung da ton tai trong CSDL chua
+            $error['news_title'] = 'Title da ton tai';
+        }
+        if ($valid->valid_is_slug($data1['news_slug'])) {
+            $error['news_slug'] = 'Unvalid slug';
+        } else if ($new_object->edit_exist('news', 'news_slug', $data1['news_slug'], 'news_id',$data1['news_id'])) {
+            //Kiem tra xem chung da ton tai trong CSDL chua
+            $error['news_slug'] = 'Slug da ton tai';
+        }
+        if (strlen($data1['news_content']) < 500) {
+            $error['news_content'] = 'Content is very short, Minimize is 500 characters!';
+        }
         if (empty($error)) {
             $flag = $new_object->update('news', $data1,'news_id',$id);
             if ($flag) {
                 echo '<script language="javascript">';
-                    echo 'alert("A new news have just been added!");';
+                    echo 'alert("Edit successfully!");';
                     echo 'window.location.assign("admin/index.php?action=news");';
                 echo '</script>';
                 die();
