@@ -1,4 +1,5 @@
-<?php if (!defined('SYSPATH'))
+<?php
+if (!defined('SYSPATH'))
     die('Request not found!');
 $pathforsite = 'public/site/';
 ?>
@@ -22,7 +23,7 @@ $user = $user_object->get_row('SELECT * FROM users WHERE user_id = 7');
             <button class="btn btn-default">Change password</button>
             <button class="btn btn-default"><i class="fa fa-remove"></i></button>
         </div>
-        <?php echo $valid->show_error($error, 'update');?>
+        <?php echo $valid->show_error($error, 'update'); ?>
         <div class="edit">
             <form method="post" action="" enctype="multipart/form-data" class="form-horizontal">
                 <input name="type_action" type="hidden" value="user_edit">
@@ -44,6 +45,7 @@ $user = $user_object->get_row('SELECT * FROM users WHERE user_id = 7');
                 <button class="btn btn-danger" type="submit" name="submit">Save</button>
             </form>
         </div>
+
     </div>
     <div class="col-md-8 cl-sm-8 content_right">
         <div id="container">
@@ -90,7 +92,21 @@ $user = $user_object->get_row('SELECT * FROM users WHERE user_id = 7');
                             </tbody>
                         </table>
                     </div>
+                    
                     <div class="clr"></div>
+                    <div class="change_password">
+                        <form method="post" action="" class="form-horizontal">
+                            <input name="type_action" type="hidden"  value="user_change_pass">
+                            <input class="form-control" type="password" name="old_password" placeholder="Current password">
+                           
+                            <?php echo $valid->show_error($error, 'old_password'); ?>
+                            <input value="" class="form-control" type="password" name="password" placeholder="Your new password">
+                            <?php echo $valid->show_error($error, 'user_password'); ?>
+                            <input value="" class="form-control" name="confirm_password" type="password" placeholder="Confirm password">
+                            <?php echo $valid->show_error($error, 'user_confirm_password'); ?>
+                            <button class="btn btn-danger" type="submit" name="submit">Save</button>
+                        </form>
+                    </div>
                 </div><!-- #tab1 -->
 
                 <div id="tab2" class="tab_content"> 

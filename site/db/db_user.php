@@ -172,3 +172,48 @@ if ($action == 'user_edit') { /* --------------------------------------cai nay l
         }
     }
 }
+
+if ($action == 'user_change_pass') { /* --------------------------------------cai nay la phan them ban nhe-------- */
+    if (isset($_POST['submit'])) {
+        $old_password = input_post('old_password');
+        if (NULL !== $old_password) {
+            if ($old_password != '00000000') {
+                $error['old_password'] = 'Password is wrong!';
+            }
+        } 
+
+
+        $password = input_post('password');
+        $confirm_password = input_post('confirm_password');
+        if (isset($password)) {
+            if (strlen($password) < 8) {
+                $error['user_password'] = "Password is at least 8 character!";
+            }
+            if (isset($confirm_password)) {
+                if ($password != $confirm_password) {
+                   $error['user_confirm_password'] = "Confirm your password again!";
+                } else {
+                    $data1['user_password'] = md5($password);
+                }
+            } else {
+                $error['user_confirm_password'] = "You have to enter your confirm password!";
+            }
+        } else {
+            $error['user_password'] = "You have to enter your password!";
+        }
+
+
+        if (empty($error)) {
+            $flag = $user_object->update('users', $data1, 'user_id', 7);
+            if ($flag) {
+                echo '<script language="javascript">';
+                echo 'alert("You have changed password successfully");';
+                echo 'window.location.assign("index.php?action=user");';
+                echo '</script>';
+                die();
+            } else {
+                $error['update'] = 'can not update your profile';
+            }
+        }
+    }
+}
