@@ -19,7 +19,7 @@ if ($action == 'user_add') { /* --------------------------------------cai nay la
             if (move_uploaded_file($_FILES['avatar']['tmp_name'], $path)) {
                 
             } else {
-                $error['user_avatar'] = 'Image is not uploaded!';
+                $error['user_avatar'] = 'Avatar is not uploaded!';
             }
         }
         //Process current date
