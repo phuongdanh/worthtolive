@@ -98,7 +98,7 @@ if ($action == 'user_edit') { /* --------------------------------------cai nay l
             // Upload file
             move_uploaded_file($_FILES['new_avatar']['tmp_name'], $path);
         } else {
-            $path = input_post('current_avartar');
+            $path = input_post('current_avatar');
         }
 
         //Process current date
@@ -162,7 +162,7 @@ if ($action == 'user_edit') { /* --------------------------------------cai nay l
             $flag = $user_object->update('users', $data1, 'user_id', $data1['user_id']);
             if ($flag) {
                 echo '<script language="javascript">';
-                echo 'alert("You have descripted successfully");';
+                echo 'alert("You have edited your profile successfully");';
                 echo 'window.location.assign("index.php?action=user");';
                 echo '</script>';
                 die();
@@ -180,7 +180,7 @@ if ($action == 'user_change_pass') { /* --------------------------------------ca
             if ($old_password != '00000000') {
                 $error['old_password'] = 'Password is wrong!';
             }
-        } 
+        }
 
 
         $password = input_post('password');
@@ -191,7 +191,7 @@ if ($action == 'user_change_pass') { /* --------------------------------------ca
             }
             if (isset($confirm_password)) {
                 if ($password != $confirm_password) {
-                   $error['user_confirm_password'] = "Confirm your password again!";
+                    $error['user_confirm_password'] = "Confirm your password again!";
                 } else {
                     $data1['user_password'] = md5($password);
                 }
@@ -214,6 +214,8 @@ if ($action == 'user_change_pass') { /* --------------------------------------ca
             } else {
                 $error['update'] = 'can not update your profile';
             }
+        } else {
+            $error['update'] = 'There are misstakes in your process, please try again!';
         }
     }
 }

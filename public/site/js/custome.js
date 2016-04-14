@@ -38,6 +38,18 @@ jQuery(document).ready(function ($) {
                 mainMenu.find('li').removeClass('active');
                 $(this).addClass('active');
             });
-
+            
+            $('#edit').click(function(){
+                $('.edit').slideToggle();
+                
+            });
+            $('#change_password').click(function(){
+                $('.change_password').slideToggle();
+                
+            });
+            $('#change').click(function(){
+                $('.change_password').show();
+                
+            });
             
 });
