@@ -1,4 +1,4 @@
-
+<?php session_start(); ?>
         <?php 
        define('SYSPATH', 'system/');
        require SYSPATH.'client.php';
@@ -6,6 +6,7 @@
         
         require SYSPATH.'site.php';
         require_once SYSPATH.'validate.php';
+        require_once SYSPATH.'session.php';
         
         if(file_exists('site/action/'.$action.'.php')){
             
