@@ -1,7 +1,10 @@
-<?php if (!defined('SYSPATH'))
+<?php
+if (!defined('SYSPATH'))
     die('Request not found!');
-$pathforsite = 'http://localhost/worthtolive/public/site/';
+$pathforsite = 'public/site/';
 $data = new process();
+$valid = new valid();
+require 'common/process_session.php';
 ?>
 <div class="clr"></div>
 <div class="slider_wrapper">
@@ -270,69 +273,29 @@ $data = new process();
                                             <a href="#">We do not spam. We value your privacy!</a>
                                         </div>-->
 
-                    <?php
-                    $valid = new valid();
-                    $error = array();
 
-// BƯỚC 1: KIỂM TRA NẾU LÀ ADMIN THÌ REDIRECT
-// BƯỚC 2: NẾU NGƯỜI DÙNG SUBMIT FORM
-                    if (isset($_POST['login'])) {
-                        // lấy tên đăng nhập và mật khẩu
-                        $username = input_post('username');
-                        $password = input_post('password');
-
-                        // Kiểm tra tên đăng nhập
-                        if (empty($username)) {
-                            $error['username'] = 'Bạn chưa nhập tên đăng nhập';
-                        }
-
-                        // Kiểm tra mật khẩu
-                        if (empty($password)) {
-                            $error['password'] = 'Bạn chưa nhập mật khẩu';
-                        }
-
-                        // Nếu không có lỗi
-                        if (!$error) {
-                            // include file xử lý database user
-                            include_once('site/db/db_user.php');
-
-                            // lấy thông tin user theo username
-                            $user = $data->db_user_get_by_username($username);
-
-                            // Nếu không có kết quả
-                            if (empty($user)) {
-                                $error['username'] = 'Tên đăng nhập không đúng';
-                            }
-                            // nếu có kết quả nhưng sai mật khẩu
-                            else if ($user['user_password'] != md5($password)) {
-                                $error['password'] = 'Mật khẩu bạn nhập không đúng';
-                            }
-
-                            // nếu mọi thứ ok thì tức là đăng nhập thành công 
-                            // nên thực hiện redirect sang trang chủ
-                            if (!$error) {
-                                set_logged($user['user_name'], $user['user_level']);
-                                //redirect(base_url('admin/?m=common&a=dashboard'));
-                            }
-                        }
-                    }
-                    ?>
 
                     <div class="col-md-12 login">
                         <span>Sign  Up  for    Newsletter</span>
                         <a href="#">Sign up to receive our free newsletters!</a>
-                        <?php 
-                            if(isset($_SESSION['ss_user_token'])){
-                                echo 'Da dang nhap!';
-                            }else{
-                                echo 'Chua Dang nhap';
-                            }
+
+                        <?php
+                        
+
+
+                        if (isset($_SESSION['ss_user_token'])) {
+                            echo 'Da dang nhap!';
+                            var_dump($_SESSION['ss_user_token']);
+                            echo '<a href="index.php?action=logout">Logout</a>';
+                        } else {
+                            echo 'Chua Dang nhap';
+                        }
                         ?>
                         <form action="" method="post">
                             <input class="form-control" name="username" type="text" placeholder="Name">
-                            <?php echo $valid->show_error($error, 'username')?>
+                            <?php echo $valid->show_error($error, 'username') ?>
                             <input class="form-control" name="password"type="text" placeholder="Email address">
-                            <?php echo $valid->show_error($error, 'password')?>
+                            <?php echo $valid->show_error($error, 'password') ?>
                             <button name="login">SUBMIT</button>
 
                         </form>

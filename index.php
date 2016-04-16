@@ -7,13 +7,10 @@
         require SYSPATH.'site.php';
         require_once SYSPATH.'validate.php';
         require_once SYSPATH.'session.php';
-        
         if(file_exists('site/action/'.$action.'.php')){
-            
             require SYSPATH.'database.php';
             $object = new process();
             require 'site/action/'.$action.'.php';
-            
             $object->disconnect();
         }
         else{

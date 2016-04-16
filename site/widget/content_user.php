@@ -7,7 +7,8 @@ $pathforsite = 'public/site/';
 $error = array();
 $valid = new valid();
 require_once 'site/db/db_user.php';
-$user = $user_object->get_row('SELECT * FROM users WHERE user_id = 7');
+$user = $user_object->get_row("SELECT * FROM users WHERE user_name = '".$_SESSION['ss_user_token']['username']."'");
+
 ?>
 
 

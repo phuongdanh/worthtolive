@@ -16,7 +16,7 @@ and open the template in the editor.
         $action = input_get('action');
         
         require SYSPATH.'admin.php';
-        
+        require_once SYSPATH.'session.php';
         
         if(file_exists('action/'.$action.'.php')){
             

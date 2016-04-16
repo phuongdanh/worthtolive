@@ -11,15 +11,19 @@ $user_object = new process();
 $action = input_post('type_action');
 if ($action == 'user_add') { /* --------------------------------------cai nay la phan them ban nhe-------- */
     if (isset($_POST['submit'])) {
-        if ($_FILES['avatar']['error'] > 0) {
+        if ($_FILES['avatar']['error'] > 0 && $_FILES['avatar']['error'] != 4) {
             $error['user_avatar'] = 'Image is not fit!';
         } else {
-            $path = 'public/site/images/users/' . $_FILES['avatar']['name'];
-            // Upload file
-            if (move_uploaded_file($_FILES['avatar']['tmp_name'], $path)) {
+            if ($_FILES['avatar']['error'] == 4) {
                 
-            } else {
-                $error['user_avatar'] = 'Avatar is not uploaded!';
+            }else{
+               $path = 'public/site/images/users/' . $_FILES['avatar']['name'];
+                // Upload file
+                if (move_uploaded_file($_FILES['avatar']['tmp_name'], $path)) {
+                    
+                } else {
+                    $error['user_avatar'] = 'Avatar is not uploaded!';
+                } 
             }
         }
         //Process current date
@@ -81,6 +85,8 @@ if ($action == 'user_add') { /* --------------------------------------cai nay la
         if (empty($error)) {
             $flag = $user_object->add('users', $data);
             if ($flag) {
+                $data['user_level'] = 1;
+                set_logged($data['user_name'], $data['user_level']);
                 echo '<script language="javascript">';
                 echo 'alert("You have descripted successfully");';
                 echo 'window.location.assign("index.php?action=home");';
@@ -161,6 +167,8 @@ if ($action == 'user_edit') { /* --------------------------------------cai nay l
         if (empty($error)) {
             $flag = $user_object->update('users', $data1, 'user_id', $data1['user_id']);
             if ($flag) {
+                $data1['user_level'] = 1;
+                set_logged($data1['user_name'], $data1['user_level']);
                 echo '<script language="javascript">';
                 echo 'alert("You have edited your profile successfully");';
                 echo 'window.location.assign("index.php?action=user");';

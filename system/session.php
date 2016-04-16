@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+
 <?php
 
 /*
@@ -36,8 +36,8 @@ function set_logged($username, $level) {
 }
 
 // Hàm thiết lập đăng xuất
-function set_logout() {
-    session_delete('ss_user_token');
+function set_logout($key) {
+    session_delete($key);
 }
 
 // Hàm kiểm tra trạng thái người dùng đã đăng hập chưa
@@ -54,4 +54,8 @@ function is_admin() {
     }
     return false;
 }
+
+
+
+
 
