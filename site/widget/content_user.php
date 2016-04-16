@@ -7,8 +7,9 @@ $pathforsite = 'public/site/';
 $error = array();
 $valid = new valid();
 require_once 'site/db/db_user.php';
-$user = $user_object->get_row("SELECT * FROM users WHERE user_name = '".$_SESSION['ss_user_token']['username']."'");
-
+require_once 'site/db/db_news_users.php';
+$categories = $new_object->get_list("SELECT cate_id, cate_title FROM categories");
+$user = $user_object->get_row("SELECT * FROM users WHERE user_name = '" . $_SESSION['ss_user_token']['username'] . "'");
 ?>
 
 
@@ -111,61 +112,112 @@ $user = $user_object->get_row("SELECT * FROM users WHERE user_name = '".$_SESSIO
                 </div><!-- #tab1 -->
 
                 <div id="tab2" class="tab_content"> 
-                    <table class="table">
-                        <tbody>
-                        <form class="form-horizontal" role="form">
-                            <tr>
-                                <td>
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-2" for="Title">Title:</label>
+                    <form class="form-horizontal" role="form" id="add_news_form" enctype="multipart/form-data" method="post">
+                        <table class="table">
+                            <tbody>
+                            <input name="type_action" type="hidden" value="news_add">
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">News title</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" name="news_title" value="" placeholder="News title" class="form-control" />
+                                                <?php
+                                                echo $valid->show_error($error, 'news_title');
+                                                ?>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">Slug</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" name="news_slug" value="" placeholder="News slug" class="form-control" />
+                                                <?php
+                                                echo $valid->show_error($error, 'news_slug');
+                                                ?>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label" for="input-name1">News content</label>
+                                            <div class="col-sm-10">
+                                                <textarea type="text" name="news_content" value="" id="input-content" class="form-control content"></textarea>
+                                                <?php
+                                                echo $valid->show_error($error, 'news_content');
+                                                ?>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label class="col-sm-2 control-label">Images</label>
                                         <div class="col-sm-10">
-                                            <input class="form-control" id="title" placeholder="Enter title">
+                                            <input type="file" name="news_image" value="" class="form-control"/>
+                                            <?php
+                                            echo $valid->show_error($error, 'news_image');
+                                            ?>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-2" for="Title">Content:</label>
-                                        <div class="col-sm-10">
-                                            <textarea type="" class="form-control" id="content" placeholder="Tap to compose"></textarea>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group"> 
+                                            <label class="col-sm-2 control-label">Description</label>
+                                            <div class="col-sm-10">
+                                                <textarea rows="5" name="news_des" placeholder="Description"  class="form-control"></textarea>
+                                            </div>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-2" for="Title">Title:</label>
-                                        <div class="col-sm-10">
-                                            <input class="form-control" id="title" placeholder="Enter title">
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="form-group">
-                                        <label class="control-label col-sm-2" for="Title">Title:</label>
-                                        <div class="col-sm-10">
-                                            <input class="form-control" id="title" placeholder="Enter title">
-                                        </div>
-                                    </div></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="form-group"> 
-                                        <div class="col-sm-offset-2 col-sm-10">
-                                            <button type="submit" class="btn btn-default">Submit</button>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group"> 
+                                            <label class="col-sm-2 control-label">Category</label>
+                                            <div class="col-md-10">
+                                                <select class="form-control" name="cate_id">
+                                                    <?php foreach ($categories as $cate => $value): ?>
+                                                        <option value="<?php echo $value['cate_id']; ?>"><?php echo $value['cate_title']; ?></option>
+                                                        <?php
+                                                    endforeach;
+                                                    ?>
 
-                        </form>
-                        </tbody>
-                    </table>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="form-group"> 
+                                            <label class="col-sm-2 control-label">Keywords</label>
+                                            <div class="col-sm-10">
+                                                <input type="text" name="news_keyword" value="" placeholder="News keywords" id="input-meta-title1" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                               
+                                <tr>
+                                    <td>
+                                        <div class="form-group"> 
+                                            <div class="col-md-2"></div>
+                                            <div class="col-sm-10">
+                                                <button name="save" type="submit" value="submit" class="btn btn-danger">Save</button>
+                                                <button name="reset" type="reset" value="reset" class="btn btn-danger">Reset</button>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </form>
                 </div><!-- #tab2 -->
 
                 <!--                <div id="tab3" class="tab_content"> 
