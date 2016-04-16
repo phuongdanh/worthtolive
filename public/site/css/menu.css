@@ -30,6 +30,7 @@ header .logo{
 }
 header .search{
 	text-align:right;
+        width: 30%;
 }
 header .search a{
 	margin-left: 9px;
@@ -68,6 +69,7 @@ header .search button{
 header .menu{
 	text-align: right;
 	margin-top: 20px;
+        width: 45%;
 }
 header .menu ul{
 	display: inline-block;

@@ -13,8 +13,18 @@ $pathforsite = 'http://localhost/worthtolive/public/site/'; ?>
                         <li><a href="index.php?action=home">Home</a></li>
                         <li><a href="index.php?action=about">About Us</a></li>
                         <li><a href="index.php?action=contact">Contact Us</a></li>
-                        <li><a href="index.php?action=subcribe">Subcribe</a></li>
-                        <li><a href="#"  data-toggle="modal" data-target="#myModal">Login</a></li>
+                        <?php 
+                        if(!isset($_SESSION['ss_user_token'])){
+                            echo '<li><a href="index.php?action=subcribe">Subcribe</a></li>';
+                            echo '<li><a href="#"  data-toggle="modal" data-target="#myModal">Login</a></li>';
+                        }else{
+                            echo '<li><a href="index.php?action=user">Your account</a></li>';
+                            echo '<li><a href="index.php?action=logout">Logout</a></li>';
+                        }
+                        
+                        ?>
+                        
+                        
                     </ul>
                 </div>
                 <div class="col-md-4 col-sm-12 search">

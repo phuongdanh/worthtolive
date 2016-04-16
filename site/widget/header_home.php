@@ -6,7 +6,6 @@
         <meta charset="utf-8"></meta>
         <link rel="stylesheet" type="text/css" href="<?php echo $pathforsite; ?>css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="<?php echo $pathforsite; ?>css/menu.css">
-
         <link rel="stylesheet" type="text/css" href="<?php echo $pathforsite; ?>css/style.css">
         <link rel="stylesheet" type="text/css" href="<?php echo $pathforsite; ?>font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" type="text/css" href="<?php echo $pathforsite; ?>css/slider.css">

@@ -46,6 +46,7 @@
         if (!$error) {
             set_logged($user['user_name'], $user['user_level']);
             //redirect(base_url('admin/?m=common&a=dashboard'));
+            echo "<meta http-equiv=\"refresh\" content=\"0;URL=index.php?action=home\">";
         }
     }
 }

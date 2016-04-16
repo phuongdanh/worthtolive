@@ -3,7 +3,7 @@ if (!defined('SYSPATH'))
     die('Request not found!');
 $pathforsite = 'public/site/';
 $data = new process();
-$valid = new valid();
+
 require 'common/process_session.php';
 ?>
 <div class="clr"></div>
@@ -279,23 +279,12 @@ require 'common/process_session.php';
                         <span>Sign  Up  for    Newsletter</span>
                         <a href="#">Sign up to receive our free newsletters!</a>
 
-                        <?php
                         
-
-
-                        if (isset($_SESSION['ss_user_token'])) {
-                            echo 'Da dang nhap!';
-                            var_dump($_SESSION['ss_user_token']);
-                            echo '<a href="index.php?action=logout">Logout</a>';
-                        } else {
-                            echo 'Chua Dang nhap';
-                        }
-                        ?>
                         <form action="" method="post">
                             <input class="form-control" name="username" type="text" placeholder="Name">
-                            <?php echo $valid->show_error($error, 'username') ?>
+                            
                             <input class="form-control" name="password"type="text" placeholder="Email address">
-                            <?php echo $valid->show_error($error, 'password') ?>
+                            
                             <button name="login">SUBMIT</button>
 
                         </form>
