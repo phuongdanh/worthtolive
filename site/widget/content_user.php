@@ -8,6 +8,7 @@ $error = array();
 $valid = new valid();
 require_once 'site/db/db_user.php';
 require_once 'site/db/db_news_users.php';
+$news = $new_object->get_list("SELECT news_id, news_title, news_slug, cate_id, cate_title, cate_slug, created FROM news_users WHERE add_userid = " . $_SESSION['ss_user_token']['user_id']);
 $categories = $new_object->get_list("SELECT cate_id, cate_title FROM categories");
 $user = $user_object->get_row("SELECT * FROM users WHERE user_name = '" . $_SESSION['ss_user_token']['username'] . "'");
 ?>
@@ -80,29 +81,26 @@ $user = $user_object->get_row("SELECT * FROM users WHERE user_name = '" . $_SESS
                                 <tr>
                                     <th>Stt</th>
                                     <th>Title</th>
-                                    <th>Status</th>
+                                    <th>Category</th>
+                                    <th>Created</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>cfhfduuuuuuuuuuuuuuuuuuuuuuuu uuuuuuuuuuuuuuuuuuuuuuuuuuj</td>
-                                    <td>john@example.com</td>
-                                    <td><i class="fa fa-remove"></i>&nbsp;&nbsp;<i class="fa fa-pencil"></i></td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Moe</td>
-                                    <td>mary@example.com</td>
-                                    <td><i class="fa fa-remove"></i>&nbsp;&nbsp;<i class="fa fa-pencil"></i></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Dooley</td>
-                                    <td>july@example.com</td>
-                                    <td><i class="fa fa-remove"></i>&nbsp;&nbsp;<i class="fa fa-pencil"></i></td>
-                                </tr>
+                                <?php 
+                                $i = 0;
+                                foreach ($news as $news) { 
+                                    $i++;
+                                ?>
+                                    <tr>
+                                        <td><?php echo $i; ?></td>
+                                        <td><?php echo $news['news_title']; ?></td>
+                                        <td><?php echo $news['cate_title']; ?></td>
+                                        <td><?php echo $news['created']; ?></td>
+                                        <td><i class="fa fa-remove"></i>&nbsp;&nbsp;<i class="fa fa-pencil"></i></td>
+                                    </tr>
+                                <?php } ?>
+
                             </tbody>
                         </table>
                     </div>
@@ -116,104 +114,104 @@ $user = $user_object->get_row("SELECT * FROM users WHERE user_name = '" . $_SESS
                         <table class="table">
                             <tbody>
                             <input name="type_action" type="hidden" value="news_add">
-                                <tr>
-                                    <td>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">News title</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" name="news_title" value="" placeholder="News title" class="form-control" />
-                                                <?php
-                                                echo $valid->show_error($error, 'news_title');
-                                                ?>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">Slug</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" name="news_slug" value="" placeholder="News slug" class="form-control" />
-                                                <?php
-                                                echo $valid->show_error($error, 'news_slug');
-                                                ?>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label" for="input-name1">News content</label>
-                                            <div class="col-sm-10">
-                                                <textarea type="text" name="news_content" value="" id="input-content" class="form-control content"></textarea>
-                                                <?php
-                                                echo $valid->show_error($error, 'news_content');
-                                                ?>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <label class="col-sm-2 control-label">Images</label>
+                            <tr>
+                                <td>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">News title</label>
                                         <div class="col-sm-10">
-                                            <input type="file" name="news_image" value="" class="form-control"/>
+                                            <input type="text" name="news_title" value="" placeholder="News title" class="form-control" />
                                             <?php
-                                            echo $valid->show_error($error, 'news_image');
+                                            echo $valid->show_error($error, 'news_title');
                                             ?>
                                         </div>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="form-group"> 
-                                            <label class="col-sm-2 control-label">Description</label>
-                                            <div class="col-sm-10">
-                                                <textarea rows="5" name="news_des" placeholder="Description"  class="form-control"></textarea>
-                                            </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">Slug</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="news_slug" value="" placeholder="News slug" class="form-control" />
+                                            <?php
+                                            echo $valid->show_error($error, 'news_slug');
+                                            ?>
                                         </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="form-group"> 
-                                            <label class="col-sm-2 control-label">Category</label>
-                                            <div class="col-md-10">
-                                                <select class="form-control" name="cate_id">
-                                                    <?php foreach ($categories as $cate => $value): ?>
-                                                        <option value="<?php echo $value['cate_id']; ?>"><?php echo $value['cate_title']; ?></option>
-                                                        <?php
-                                                    endforeach;
-                                                    ?>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label" for="input-name1">News content</label>
+                                        <div class="col-sm-10">
+                                            <textarea type="text" name="news_content" value="" id="input-content" class="form-control content"></textarea>
+                                            <?php
+                                            echo $valid->show_error($error, 'news_content');
+                                            ?>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label class="col-sm-2 control-label">Images</label>
+                                    <div class="col-sm-10">
+                                        <input type="file" name="news_image" value="" class="form-control"/>
+                                        <?php
+                                        echo $valid->show_error($error, 'news_image');
+                                        ?>
+                                    </div>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-group"> 
+                                        <label class="col-sm-2 control-label">Description</label>
+                                        <div class="col-sm-10">
+                                            <textarea rows="5" name="news_des" placeholder="Description"  class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-group"> 
+                                        <label class="col-sm-2 control-label">Category</label>
+                                        <div class="col-md-10">
+                                            <select class="form-control" name="cate_id">
+                                                <?php foreach ($categories as $cate => $value): ?>
+                                                    <option value="<?php echo $value['cate_id']; ?>"><?php echo $value['cate_title']; ?></option>
+                                                    <?php
+                                                endforeach;
+                                                ?>
 
-                                                </select>
-                                            </div>
+                                            </select>
                                         </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="form-group"> 
-                                            <label class="col-sm-2 control-label">Keywords</label>
-                                            <div class="col-sm-10">
-                                                <input type="text" name="news_keyword" value="" placeholder="News keywords" id="input-meta-title1" class="form-control" />
-                                            </div>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="form-group"> 
+                                        <label class="col-sm-2 control-label">Keywords</label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="news_keyword" value="" placeholder="News keywords" id="input-meta-title1" class="form-control" />
                                         </div>
-                                    </td>
-                                </tr>
-                               
-                                <tr>
-                                    <td>
-                                        <div class="form-group"> 
-                                            <div class="col-md-2"></div>
-                                            <div class="col-sm-10">
-                                                <button name="save" type="submit" value="submit" class="btn btn-danger">Save</button>
-                                                <button name="reset" type="reset" value="reset" class="btn btn-danger">Reset</button>
-                                            </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <div class="form-group"> 
+                                        <div class="col-md-2"></div>
+                                        <div class="col-sm-10">
+                                            <button name="save" type="submit" value="submit" class="btn btn-danger">Save</button>
+                                            <button name="reset" type="reset" value="reset" class="btn btn-danger">Reset</button>
                                         </div>
-                                    </td>
-                                </tr>
+                                    </div>
+                                </td>
+                            </tr>
 
                             </tbody>
                         </table>

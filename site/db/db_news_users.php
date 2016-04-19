@@ -28,6 +28,7 @@ if (isset($_POST['save'])) {
             }
             else{
                 $cate_id = input_post('cate_id');
+                $cate_infor = $new_object->get_row("SELECT cate_title, cate_slug FROM categories WHERE cate_id = ".$cate_id);
                 $path = 'public/site/images/'.$cate_id.'/'.$_FILES['news_image']['name'];
                 // Upload file
                 if(move_uploaded_file($_FILES['news_image']['tmp_name'],$path)){
@@ -41,8 +42,12 @@ if (isset($_POST['save'])) {
             'news_slug' => input_post('news_slug'),
             'news_content' => input_post('news_content'),
             'cate_id' => input_post('cate_id'),
+            'cate_title' => $cate_infor['cate_title'],
+            'cate_slug' => $cate_infor['cate_slug'],
             'news_keywords' => input_post('news_keywords'),
             'news_description' => input_post('news_des'),
+            'created' => date('Y/m/d H:i:s', time()),
+            'add_userid' => $_SESSION['ss_user_token']['user_id'],
         );
         if(isset($path)){
             $data['news_image'] = $path;
@@ -58,7 +63,7 @@ if (isset($_POST['save'])) {
         if (strlen($data['news_content']) < 500) {
             $error['news_content'] = 'Content is very short, Minimize is 500 characters!';
         }
-        if ($valid->valid_is_slug($data['news_slug']) || $data['news_slug'] == '') {
+        if (!$valid->valid_is_slug($data['news_slug']) || $data['news_slug'] == '') {
             $error['news_slug'] = 'Unvalid slug';
         } else if ($new_object->exist('news', 'news_slug', $data['news_slug'], 'news_id')) {
             //Kiem tra xem chung da ton tai trong CSDL chua
@@ -72,7 +77,11 @@ if (isset($_POST['save'])) {
                     echo 'window.location.assign("index.php?action=user");';
                 echo '</script>';
                 die();
-            } 
+            }else{
+                echo 'Can not add this news to database!';
+            }
+        }else{
+            echo 'There is error!';
         }
     }/*-----------------------------ket thuc phan them -*/
     if ($action == 'new_edit') { /*--------------------------------------cai nay la phan edit ban nhe--------*/
@@ -84,9 +93,9 @@ if (isset($_POST['save'])) {
             }
             else{
                 $cate_id = input_post('cate_id');
-                $path = '/public/site/images/'.$cate_id.'/'.$_FILES['news_image']['name'];
+                $path = 'public/site/images/'.$cate_id.'/'.$_FILES['news_image']['name'];
                 // Upload file
-                if(move_uploaded_file($_FILES['news_image']['tmp_name'],'../'.$path)){
+                if(move_uploaded_file($_FILES['news_image']['tmp_name'],$path)){
                     $real_image = $path;
                 }else{
                     $error['news_image'] = 'Image is not uploaded!';

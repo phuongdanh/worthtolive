@@ -2,9 +2,6 @@
 if (!defined('SYSPATH'))
     die('Request not found!');
 $pathforsite = 'public/site/';
-$data = new process();
-
-require 'common/process_session.php';
 ?>
 <div class="clr"></div>
 <div class="slider_wrapper">
