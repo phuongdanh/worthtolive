@@ -2,6 +2,8 @@
 if (!defined('SYSPATH'))
     die('Request not found!');
 $pathforsite = 'public/site/';
+$data = new process();
+$my_news = $data->get_list("SELECT news_id, news_title, news_slug, news_image FROM news_users");
 ?>
 <div class="clr"></div>
 <div class="slider_wrapper">
@@ -72,31 +74,16 @@ $pathforsite = 'public/site/';
         <div class="breaking"><a href="#"><img src="<?php echo $pathforsite; ?>images/breaking.png"></a></div>
     </div>
     <div class="slider_right">
-        <div class="item">
-            <a href="#">
-                <img src="<?php echo $pathforsite; ?>images/baomoi1.jpg" width="68px" height="46px">
-                <span>Lorem ipsum dolor sit amet conse ctetur adipiscing elit</span>
-            </a>
-        </div>
-        <div class="item">
-            <a href="#">
-                <img src="<?php echo $pathforsite; ?>images/baomoi2.jpg" width="68px" height="46px">
-                <span>Lorem ipsum dolor sit amet conse ctetur adipiscing elit</span>
-            </a>
-        </div>
-        <div class="item">
-            <a href="#">
-                <img src="<?php echo $pathforsite; ?>images/baomoi3.jpg" width="68px" height="46px">
-                <span>Lorem ipsum dolor sit amet conse ctetur adipiscing elit</span>
-            </a>
-        </div>
+        <?php foreach ($my_news as $news) { ?>
+            <div class="item">
+                <a href="index.php?action=read&slug=<?php echo $news['news_slug'];?>">
+                    <img src="<?php echo $news['news_image']; ?>" width="68px" height="46px">
+                    <span><?php echo $news['news_title']; ?></span>
+                </a>
+            </div>
+        <?php } ?>
 
-        <div class="item">
-            <a href="#">
-                <img src="<?php echo $pathforsite; ?>images/baomoi4.jpg" width="68px" height="46px">
-                <span>Lorem ipsum dolor sit amet conse ctetur adipiscing elit</span>
-            </a>
-        </div>
+        
         <a href="#"><img src="<?php echo $pathforsite; ?>images/more.png"></a>
     </div>
     <div class="clr"></div>
@@ -276,12 +263,12 @@ $pathforsite = 'public/site/';
                         <span>Sign  Up  for    Newsletter</span>
                         <a href="#">Sign up to receive our free newsletters!</a>
 
-                        
+
                         <form action="" method="post">
                             <input class="form-control" name="username" type="text" placeholder="Name">
-                            
+
                             <input class="form-control" name="password"type="text" placeholder="Email address">
-                            
+
                             <button name="login">SUBMIT</button>
 
                         </form>

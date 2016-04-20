@@ -26,6 +26,7 @@
         $error['password'] = 'You have not entered password yet!';
     }
 
+    
     // Nếu không có lỗi
     if (!$error) {
         // include file xử lý database user
@@ -47,7 +48,9 @@
             set_logged($user['user_name'], $user['user_level']);
             $_SESSION['ss_user_token']['user_id'] = $user['user_id'];
             //redirect(base_url('admin/?m=common&a=dashboard'));
-            echo "<meta http-equiv=\"refresh\" content=\"0;URL=index.php?action=home\">";
+            $url = $_SESSION['url'];
+            unset($_SESSION['url']);
+            echo "<meta http-equiv=\"refresh\" content=\"0;URL=".$url."\">";
         }
     }
 }

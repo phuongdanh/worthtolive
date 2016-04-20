@@ -1,10 +1,16 @@
-<?php if (!defined('SYSPATH')) die('Request not found!'); $pathforsite = 'http://localhost/worthtolive/public/site/'; ?>
-
+<?php if (!defined('SYSPATH')) die('Request not found!');
+$pathforsite = 'http://localhost/worthtolive/public/site/'; ?>
+<?php
+$data = new process();
+$news_slug = input_get('slug');
+$current_news = $data->get_row("SELECT * FROM news_users WHERE news_slug = '".$news_slug."'");
+?>
 <div class="clr"></div>
 <div class="content_wrapper">
     <div class="col-md-8 col-sm-12 content_left">
         <span class="title">
-            Jaish-e-Mohammed chief arrested? India to seek Pakistan's confirmation, decide on talks today
+            <?php echo $current_news['news_title']; ?>
+           
         </span><br>
         <i class="date">15th Jan 2016</i>
         <hr>
@@ -16,16 +22,8 @@
             <a href="#"><img src="<?php echo $pathforsite; ?>images/s_pet.png"></a><br>
         </div>
         <div class="read">
-            <img src="<?php echo $pathforsite; ?>images/read1.jpg" width="60%">
-            <p>NEW DELHI: Pakistan foreign office on Thursday said that it was not aware about detention of Jaish-e-Mohammed chief Maulana Masood Azhar, the suspected mastermind of the Pathankot attack.
-                Talking to reporters in Islamabad, Pakistan foreign office spokesperson Qazi Khalilullah said he is "not aware of such arrests". He also said that foreign secretary-level talks between India and Pakistan have been postponed for the time being.
-                "The foreign secretary-level talks between India and Pakistan will not be held tomorrow. Mutual consultations are on about rescheduling the talks," Khalilullah told reporters.
-                He added that the Pakistani government will extend all its cooperation in India's investigation of the January 2 attack which killed seven security personnel.
-                On Wednesday, Pakistan announced that it has shifted JeM chief Azhar, his brother and other members of the terror outfit to an undisclosed location where the concerned authorities were interrogating them about the armed attack on Pathankot airbase. A senior official of Pakistan's elite security agency told this TOI on condition of anonymity as he was not authorized to speak publicly.
-                Top Comment
-
-                Greatest drama ever enacted is played by Pakistahan
-                nrbulusu Rao.</p>
+            <img src="<?php echo $current_news['news_image']; ?>" width="60%">
+            <p><?php echo $current_news['news_content'];?></p>
             <div class="clr"></div>
         </div>
         <div class="col-md-12 relate">

@@ -20,7 +20,8 @@ $user = $user_object->get_row("SELECT * FROM users WHERE user_name = '" . $_SESS
         <img src="<?php echo $user['user_avatar']; ?>" width="100%">
         <span><?php echo $user['user_name']; ?></span>
         <h6><?php echo $user['user_email']; ?></h6>
-        <h6><?php echo $user['user_phone']; ?></h6>
+        <h6><?php echo $user['user_phone'];?></h6>
+        
         <div class="action">
             <button class="btn btn-default" id="edit" title="edit profile"><i class="fa fa-pencil"></i></button>
             <button class="btn btn-default" id="change_password">Change password</button>

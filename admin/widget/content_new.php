@@ -29,7 +29,7 @@ $new_list = $new_object->get_list2($page['start'], $page['limit']);
                                     <a href="#">Category</a>
                                 </td>
                                 <td class="text-right">                    
-                                    <a href="#">Username</a>
+                                    <a href="#">Viewed</a>
                                 </td>
                                 <td class="text-right">                    
                                     <a href="#">Public date</a>
@@ -47,7 +47,7 @@ $new_list = $new_object->get_list2($page['start'], $page['limit']);
                                     </td>
                                     <td class="text-left"><?php echo $new['news_title']; ?></td>
                                     <td class="text-right"><?php echo $new['cate_title']; ?></td>
-                                    <td class="text-left"><?php echo $new['add_username']; ?></td>
+                                    <td class="text-left"><?php echo $new['news_viewed']; ?></td>
                                     <td class="text-right"><?php echo $new['created']; ?></td>
                                     <td class="text-right">
                                         

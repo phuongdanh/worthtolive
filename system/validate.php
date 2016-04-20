@@ -1,8 +1,5 @@
 <?php
 
-if (!defined('SYSPATH'))
-    die('Request not found!');
-
 class valid {
 
     function valid_is_empty($string) {

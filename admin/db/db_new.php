@@ -58,16 +58,16 @@ if (isset($_POST['save'])) {
             $error['news_title'] = 'You must enter title';
         } else if ($new_object->exist('news', 'news_title', $data['news_title'], 'news_id')) {
             //Kiem tra xem chung da ton tai trong CSDL chua
-            $error['news_title'] = 'Title da ton tai';
+            $error['news_title'] = 'Title is already exist!';
         }
-        if (strlen($data['news_content']) < 500) {
-            $error['news_content'] = 'Content is very short, Minimize is 500 characters!';
+        if (strlen($data['news_content']) < 200) {
+            $error['news_content'] = 'Content is very short, Minimize is 200 characters!';
         }
-        if ($valid->valid_is_slug($data['news_slug'])) {
+        if (!$valid->valid_is_slug($data['news_slug'])) {
             $error['news_slug'] = 'Unvalid slug';
         } else if ($new_object->exist('news', 'news_slug', $data['news_slug'], 'news_id')) {
             //Kiem tra xem chung da ton tai trong CSDL chua
-            $error['news_title'] = 'Slug da ton tai';
+            $error['news_title'] = 'Slug is already exist!';
         }
         if (empty($error)) {
             $flag = $new_object->add('news', $data);
@@ -77,7 +77,11 @@ if (isset($_POST['save'])) {
                     echo 'window.location.assign("admin/index.php?action=news");';
                 echo '</script>';
                 die();
+            }else{
+                echo 'Can not add this news to database!';
             } 
+        }  else {
+            echo 'There are some error!';
         }
     }/*-----------------------------ket thuc phan them -*/
     if ($action == 'new_edit') { /*--------------------------------------cai nay la phan edit ban nhe--------*/
@@ -120,7 +124,7 @@ if (isset($_POST['save'])) {
             //Kiem tra xem chung da ton tai trong CSDL chua
             $error['news_title'] = 'Title da ton tai';
         }
-        if ($valid->valid_is_slug($data1['news_slug'])) {
+        if (!$valid->valid_is_slug($data1['news_slug'])) {
             $error['news_slug'] = 'Unvalid slug';
         } else if ($new_object->edit_exist('news', 'news_slug', $data1['news_slug'], 'news_id',$data1['news_id'])) {
             //Kiem tra xem chung da ton tai trong CSDL chua

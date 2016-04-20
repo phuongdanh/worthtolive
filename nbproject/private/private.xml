@@ -3,18 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/worthtolive/site/widget/toper.php</file>
-            <file>file:/C:/xampp/htdocs/worthtolive/admin/index.php</file>
+            <file>file:/C:/xampp/htdocs/worthtolive/site/widget/content_read.php</file>
             <file>file:/C:/xampp/htdocs/worthtolive/site/widget/content_user.php</file>
-            <file>file:/C:/xampp/htdocs/worthtolive/site/db/db_user.php</file>
             <file>file:/C:/xampp/htdocs/worthtolive/site/db/db_news_users.php</file>
-<<<<<<< HEAD
-            <file>file:/C:/xampp/htdocs/worthtolive/admin/db/db_new.php</file>
+            <file>file:/C:/xampp/htdocs/worthtolive/site/widget/content_home.php</file>
             <file>file:/C:/xampp/htdocs/worthtolive/system/validate.php</file>
-=======
-            <file>file:/C:/xampp/htdocs/worthtolive/site/widget/login.php</file>
-            <file>file:/C:/xampp/htdocs/worthtolive/common/login.php</file>
->>>>>>> b1cb28f2c66c5279d88f4f4ea945fa37a7c1ec3e
         </group>
     </open-files>
 </project-private>
