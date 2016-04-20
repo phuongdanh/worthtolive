@@ -28,7 +28,7 @@ if (isset($_POST['save'])) {
             }
             else{
                 $cate_id = input_post('cate_id');
-                $path = 'public/site/images/'.$cate_id.'/'.$_FILES['news_image']['name'];
+                $path = '/public/site/images/'.$cate_id.'/'.$_FILES['news_image']['name'];
                 // Upload file
                 if(move_uploaded_file($_FILES['news_image']['tmp_name'],$path)){
                     
@@ -58,7 +58,7 @@ if (isset($_POST['save'])) {
         if (strlen($data['news_content']) < 500) {
             $error['news_content'] = 'Content is very short, Minimize is 500 characters!';
         }
-        if ($valid->valid_is_slug($data['news_slug']) || $data['news_slug'] == '') {
+        if (!$valid->valid_is_slug($data['news_slug']) || $data['news_slug'] == '') {
             $error['news_slug'] = 'Unvalid slug';
         } else if ($new_object->exist('news', 'news_slug', $data['news_slug'], 'news_id')) {
             //Kiem tra xem chung da ton tai trong CSDL chua

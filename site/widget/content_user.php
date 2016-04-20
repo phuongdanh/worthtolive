@@ -121,6 +121,7 @@ $user = $user_object->get_row("SELECT * FROM users WHERE user_name = '" . $_SESS
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">News title</label>
                                             <div class="col-sm-10">
+                                                
                                                 <input type="text" name="news_title" value="" placeholder="News title" class="form-control" />
                                                 <?php
                                                 echo $valid->show_error($error, 'news_title');
