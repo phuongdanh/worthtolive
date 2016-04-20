@@ -1,0 +1,13 @@
+<?php
+session_start();
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+if(isset($_SESSION['ss_user_token'])){
+    unset($_SESSION['ss_user_token']);
+    $url = $_SESSION['url'];
+    unset($_SESSION['url']);
+    echo "<meta http-equiv=\"refresh\" content=\"0;URL=" . $url . "\">";
+}

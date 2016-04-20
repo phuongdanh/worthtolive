@@ -56,6 +56,11 @@
                             <li><a href="http://forum.opencart.com" target="_blank">Support Forum</a></li>
                         </ul>
                     </li>
-                    <li><a href="http://localhost/opencart/upload/admin/index.php?route=common/logout&amp;token=dvy2kdt7YtpYXM0k4oGvNtz6peFuPRsJ"><span class="hidden-xs hidden-sm hidden-md">Logout</span> <i class="fa fa-sign-out fa-lg"></i></a></li>
+                    <li>
+                        
+                            <?php $_SESSION['url'] = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";?>
+                            <a href="common/logout.php"><span class="hidden-xs hidden-sm hidden-md">Logout</span> <i class="fa fa-sign-out fa-lg"></i></a>
+                        
+                     </li>   
                 </ul>
             </header>

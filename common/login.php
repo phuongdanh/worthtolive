@@ -22,7 +22,7 @@
         $valid = new valid();
         $error = array();
         $data = new process();
-        require 'process_session.php';
+        require 'process_session_admin.php';
         ?>
         <div class="login-block">
             <form action="" method="post">

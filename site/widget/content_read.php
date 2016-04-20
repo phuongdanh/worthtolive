@@ -4,6 +4,9 @@ $pathforsite = 'http://localhost/worthtolive/public/site/'; ?>
 $data = new process();
 $news_slug = input_get('slug');
 $current_news = $data->get_row("SELECT * FROM news_users WHERE news_slug = '".$news_slug."'");
+if($current_news == null){
+    $current_news = $data->get_row("SELECT * FROM news WHERE news_slug = '".$news_slug."'");
+}
 ?>
 <div class="clr"></div>
 <div class="content_wrapper">

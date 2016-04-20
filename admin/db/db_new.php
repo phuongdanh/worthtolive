@@ -29,7 +29,7 @@ if (isset($_POST['save'])) {
             else{
                 $cate_id = input_post('cate_id');
                 $cate_infor = $new_object->get_row("SELECT cate_title, cate_slug FROM categories WHERE cate_id = ".$cate_id);
-                $path = '/public/site/images/'.$cate_id.'/'.$_FILES['news_image']['name'];
+                $path = 'public/site/images/'.$cate_id.'/'.$_FILES['news_image']['name'];
                 // Upload file
                 if(move_uploaded_file($_FILES['news_image']['tmp_name'],'../'.$path)){
                     
@@ -93,7 +93,7 @@ if (isset($_POST['save'])) {
             }
             else{
                 $cate_id = input_post('cate_id');
-                $path = '/public/site/images/'.$cate_id.'/'.$_FILES['news_image']['name'];
+                $path = 'public/site/images/'.$cate_id.'/'.$_FILES['news_image']['name'];
                 // Upload file
                 if(move_uploaded_file($_FILES['news_image']['tmp_name'],'../'.$path)){
                     $real_image = $path;
