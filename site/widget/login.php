@@ -3,6 +3,9 @@
 $valid = new valid();
 $error = array();
 
+$data = new process();
+
+require 'common/process_session.php';
 ?>
 <div class="clr"></div>
 <div class="container dialog">

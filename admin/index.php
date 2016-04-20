@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -17,6 +18,11 @@ and open the template in the editor.
         
         require SYSPATH.'admin.php';
         require_once SYSPATH.'session.php';
+        /* Process to comfirm user is admin*/
+        if(!isset($_SESSION['ss_user_token'])){
+            header('location: http://localhost/worthtolive/common/login.php');
+        }
+        
         
         if(file_exists('action/'.$action.'.php')){
             

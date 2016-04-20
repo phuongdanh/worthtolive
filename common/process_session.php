@@ -34,7 +34,7 @@
 
         // Nếu không có kết quả
         if (empty($user)) {
-            $error['username'] = 'Password not match!';
+            $error['username'] = 'User is not exist!';
             }
         // nếu có kết quả nhưng sai mật khẩu
         else if ($user['user_password'] != md5($password)) {
@@ -45,6 +45,7 @@
         // nên thực hiện redirect sang trang chủ
         if (!$error) {
             set_logged($user['user_name'], $user['user_level']);
+            $_SESSION['ss_user_token']['user_id'] = $user['user_id'];
             //redirect(base_url('admin/?m=common&a=dashboard'));
             echo "<meta http-equiv=\"refresh\" content=\"0;URL=index.php?action=home\">";
         }

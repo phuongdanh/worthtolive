@@ -28,6 +28,7 @@ if (isset($_POST['save'])) {
             }
             else{
                 $cate_id = input_post('cate_id');
+                $cate_infor = $new_object->get_row("SELECT cate_title, cate_slug FROM categories WHERE cate_id = ".$cate_id);
                 $path = '/public/site/images/'.$cate_id.'/'.$_FILES['news_image']['name'];
                 // Upload file
                 if(move_uploaded_file($_FILES['news_image']['tmp_name'],'../'.$path)){
@@ -41,9 +42,12 @@ if (isset($_POST['save'])) {
             'news_slug' => input_post('news_slug'),
             'news_content' => input_post('news_content'),
             'cate_id' => input_post('cate_id'),
+            'cate_title' => $cate_infor['cate_title'],
+            'cate_slug' => $cate_infor['cate_slug'],
             'news_keywords' => input_post('news_keywords'),
             'news_description' => input_post('news_des'),
             'news_robots' => input_post('news_robots'),
+            'created' => date('Y/m/d H:i:s', time()),
         );
         if(isset($path)){
             $data['news_image'] = $path;
