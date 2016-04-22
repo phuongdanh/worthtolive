@@ -48,8 +48,8 @@
             set_logged($user['user_name'], $user['user_level']);
             $_SESSION['ss_user_token']['user_id'] = $user['user_id'];
             //redirect(base_url('admin/?m=common&a=dashboard'));
-            $url = $_SESSION['url'];
-            unset($_SESSION['url']);
+            $url = $_SESSION['url_for_user'];
+            unset($_SESSION['url_for_user']);
             echo "<meta http-equiv=\"refresh\" content=\"0;URL=".$url."\">";
         }
     }

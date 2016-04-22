@@ -28,7 +28,7 @@ $cates = $cate_object->get_list("SELECT cate_id, cate_title FROM categories");
                                 ?>
                             </div>
                         </div>
-                        <div class="form-group required">
+                        <div class="form-group">
                             <label class="col-sm-2 control-label">Slug</label>
                             <div class="col-sm-10">
                                 <input type="text" name="news_slug" value="" placeholder="News slug" class="form-control" />

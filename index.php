@@ -8,6 +8,7 @@
         require_once SYSPATH.'validate.php';
         require_once SYSPATH.'session.php';
         if(file_exists('site/action/'.$action.'.php')){
+            $_SESSION['url_for_user'] = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
             require SYSPATH.'database.php';
             $object = new process();
             require 'site/action/'.$action.'.php';
