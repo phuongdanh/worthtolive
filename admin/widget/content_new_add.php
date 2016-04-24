@@ -40,7 +40,7 @@ $cates = $cate_object->get_list("SELECT cate_id, cate_title FROM categories");
                         <div class="form-group required">
                             <label class="col-sm-2 control-label" for="input-name1">News content</label>
                             <div class="col-sm-10">
-                                <textarea type="text" name="news_content" value="" id="input-content" class="form-control"></textarea>
+                                <textarea type="text" name="news_content" value="" class="ckeditor"></textarea>
                                 <?php
                                 echo $valid->show_error($error, 'news_content');
                                 ?>

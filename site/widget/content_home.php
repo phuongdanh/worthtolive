@@ -76,14 +76,14 @@ $my_news = $data->get_list("SELECT news_id, news_title, news_slug, news_image FR
     <div class="slider_right">
         <?php foreach ($my_news as $news) { ?>
             <div class="item">
-                <a href="index.php?action=read&slug=<?php echo $news['news_slug'];?>">
+                <a href="index.php?action=read&slug=<?php echo $news['news_slug']; ?>">
                     <img src="<?php echo $news['news_image']; ?>" width="68px" height="46px">
                     <span><?php echo $news['news_title']; ?></span>
                 </a>
             </div>
         <?php } ?>
 
-        
+
         <a href="#"><img src="<?php echo $pathforsite; ?>images/more.png"></a>
     </div>
     <div class="clr"></div>
@@ -119,28 +119,30 @@ $my_news = $data->get_list("SELECT news_id, news_title, news_slug, news_image FR
                     </div>
                 </article>
                 <article>
+                    <!--Xu ly nhung bai viet moi nhat -->
                     <span class="cate">latest article</span>
                     <a href="#"><img src="<?php echo $pathforsite; ?>images/more.png"></a>
                     <hr>
                     <div class="row items">
-                        <div class="col-md-4 col-sm-4">
-                            <img src="<?php echo $pathforsite; ?>images/img_16.jpg">
-                            <span>Lorem ipsum dolor sit amet, consectetur</span>
-                            <p>Nulla quis lorem neque, mattis venenatis lectus. In interdum ullamcorper dolor eu mattis.</p>
-                            <a href="#">READ MORE</a>
-                        </div>
-                        <div class="col-md-4 col-sm-4">
-                            <img src="<?php echo $pathforsite; ?>images/img_17.jpg">
-                            <span>Lorem ipsum dolor sit amet, consectetur</span>
-                            <p>Nulla quis lorem neque, mattis venenatis lectus. In interdum ullamcorper dolor eu mattis.</p>
-                            <a href="#">READ MORE</a>
-                        </div>
-                        <div class="col-md-4 col-sm-4">
-                            <img src="<?php echo $pathforsite; ?>images/img_18.jpg">
-                            <span>Lorem ipsum dolor sit amet, consectetur</span>
-                            <p>Nulla quis lorem neque, mattis venenatis lectus. In interdum ullamcorper dolor eu mattis.</p>
-                            <a href="#">READ MORE</a>
-                        </div>
+                        <?php
+                        $latest = $data->get_list("SELECT news_id, news_title, news_slug,news_description, news_image FROM news ORDER BY created DESC");
+                        $i = 1;
+                        foreach ($latest as $latest) {
+                            ?>
+                            <div class="col-md-4 col-sm-4">
+                                <img src="<?php echo $latest['news_image'];?>">
+                                <span><?php if(strlen($latest['news_title']) > 38){ echo substr($latest['news_title'], 0,38);}else{ echo $latest['news_title']; }?></span>
+                                <p><?php echo substr($latest['news_description'],0, 133)?></p>
+                                <a href="index.php?action=read&slug=<?php echo $news['news_slug']; ?>">READ MORE</a>
+                            </div>
+                        <?php 
+                        $i++;
+                        if($i == 4){
+                            break;
+                        }
+                        }
+                        ?>
+
                     </div>
                 </article>
                 <div class="clr"></div>

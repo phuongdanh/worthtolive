@@ -18,6 +18,8 @@
         <link href="public/admin/javascript/jquery/datetimepicker/bootstrap-datetimepicker.min.css" type="text/css" rel="stylesheet" media="screen" />
         <link type="text/css" href="public/admin/stylesheet/stylesheet.css" rel="stylesheet" media="screen" />
         <script src="public/admin/javascript/common.js" type="text/javascript"></script>
+        <script src="public/ckeditor/ckeditor.js" type="text/javascript"></script>
+        <script src="public/ckeditor/sample.js" type="text/javascript"></script>
     </head>
     <body>
         <div id="container">

@@ -31,7 +31,7 @@ $data = $new_object->get_row('SELECT * FROM news WHERE news_id = '.$news_id);
                                 ?>
                             </div>
                         </div>
-                        <div class="form-group required">
+                        <div class="form-group">
                             <label class="col-sm-2 control-label">Slug</label>
                             <div class="col-sm-10">
                                 <input type="text" name="news_slug" value="<?php echo $data['news_slug'];?>" placeholder="News slug" class="form-control" />
@@ -43,7 +43,7 @@ $data = $new_object->get_row('SELECT * FROM news WHERE news_id = '.$news_id);
                         <div class="form-group required">
                             <label class="col-sm-2 control-label" for="input-name1">News content</label>
                             <div class="col-sm-10">
-                                <textarea type="text" name="news_content" value="" id="input-content" class="form-control"><?php echo $data['news_content'];?></textarea>
+                                <textarea type="text" name="news_content" value="" id="input-content" class="ckeditor"><?php echo $data['news_content'];?></textarea>
                                 <?php
                                 echo $valid->show_error($error, 'news_content');
                                 ?>

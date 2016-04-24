@@ -1,12 +1,18 @@
 <?php if (!defined('SYSPATH')) die('Request not found!');
 $pathforsite = 'http://localhost/worthtolive/public/site/'; ?>
 <?php
-$data = new process();
+require_once 'site/db/db_read.php';
 $news_slug = input_get('slug');
 $current_news = $data->get_row("SELECT * FROM news_users WHERE news_slug = '".$news_slug."'");
+
 if($current_news == null){
     $current_news = $data->get_row("SELECT * FROM news WHERE news_slug = '".$news_slug."'");
+    $table = 'news';
+}else{
+    $table = 'news_users';
 }
+$ip = getIp();
+setViewed($ip, $current_news['news_viewed'], $table, $current_news['news_id']);
 ?>
 <div class="clr"></div>
 <div class="content_wrapper">

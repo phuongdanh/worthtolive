@@ -149,7 +149,7 @@ $user = $user_object->get_row("SELECT * FROM users WHERE user_name = '" . $_SESS
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label" for="input-name1">News content</label>
                                         <div class="col-sm-10">
-                                            <textarea type="text" name="news_content" value="" id="input-content" class="form-control content"></textarea>
+                                            <textarea type="text" name="news_content" value="" id="input-content" class="ckeditor"></textarea>
                                             <?php
                                             echo $valid->show_error($error, 'news_content');
                                             ?>

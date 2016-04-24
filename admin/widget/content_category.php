@@ -2,7 +2,7 @@
 if (!defined('SYSPATH'))
     die('Request not found!');
 require 'db/db_category.php';
-
+$total_record = $cate_object->count('SELECT count(*) AS num_count FROM categories', 'num_count');
 $current_page = input_get('page');
 $page = page($total_record, 10, $current_page, 'admin/index.php?action=category&page={page}');
 $cate_list = $cate_object->get_list2($page['start'], $page['limit']);

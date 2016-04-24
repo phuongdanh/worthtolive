@@ -11,5 +11,6 @@
         <script type="text/javascript" src="<?php echo $pathforsite; ?>js/jquery.js"></script>
         <script type="text/javascript" src="<?php echo $pathforsite; ?>js/bootstrap.js"></script>
         <script type="text/javascript" src="<?php echo $pathforsite; ?>js/custome.js"></script>
-
+        <script src="public/ckeditor/ckeditor.js" type="text/javascript"></script>
+        <script src="public/ckeditor/sample.js" type="text/javascript"></script>
     </head>

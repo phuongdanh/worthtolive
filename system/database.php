@@ -46,7 +46,7 @@ class process {
         //Execute the query
         $result = mysqli_query($this->_conn, $sql);
         if (!$result) {// if The Query is wrong
-            die('The query is wrong');
+            die('The query is wrong count');
         }
 
         $row = mysqli_fetch_array($result, MYSQLI_ASSOC);

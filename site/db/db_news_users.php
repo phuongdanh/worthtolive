@@ -65,7 +65,21 @@ if (isset($_POST['save'])) {
         if (strlen($data['news_content']) < 200) {
             $error['news_content'] = 'Content is very short, Minimize is 200 characters!';
         }
-        if (!$valid->valid_is_slug($data['news_slug']) || $data['news_slug'] == '') {
+        if ($data['news_slug'] == '') {
+            if (!isset($error['news_title'])) {
+                $data['news_slug'] = $data['news_title'];
+                $data['news_slug'] = trim(mb_strtolower($data['news_slug']));
+                $data['news_slug'] = preg_replace('/(à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ)/', 'a', $data['news_slug']);
+                $data['news_slug'] = preg_replace('/(è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ)/', 'e', $data['news_slug']);
+                $data['news_slug'] = preg_replace('/(ì|í|ị|ỉ|ĩ)/', 'i', $data['news_slug']);
+                $data['news_slug'] = preg_replace('/(ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ)/', 'o', $data['news_slug']);
+                $data['news_slug'] = preg_replace('/(ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ)/', 'u', $data['news_slug']);
+                $data['news_slug'] = preg_replace('/(ỳ|ý|ỵ|ỷ|ỹ)/', 'y', $data['news_slug']);
+                $data['news_slug'] = preg_replace('/(đ)/', 'd', $data['news_slug']);
+                $data['news_slug'] = preg_replace('/[^a-z0-9-\s]/', '', $data['news_slug']);
+                $data['news_slug'] = preg_replace('/([\s]+)/', '-', $data['news_slug']);
+            }
+        } elseif (!$valid->valid_is_slug($data['news_slug'])) {
             $error['news_slug'] = 'Unvalid slug';
         } else if ($new_object->exist('news_users', 'news_slug', $data['news_slug'], 'news_id')) {
             //Kiem tra xem chung da ton tai trong CSDL chua
@@ -130,8 +144,8 @@ if (isset($_POST['save'])) {
             //Kiem tra xem chung da ton tai trong CSDL chua
             $error['news_slug'] = 'Slug da ton tai';
         }
-        if (strlen($data1['news_content']) < 500) {
-            $error['news_content'] = 'Content is very short, Minimize is 500 characters!';
+        if (strlen($data1['news_content']) < 200) {
+            $error['news_content'] = 'Content is very short, Minimize is 200 characters!';
         }
         if (empty($error)) {
             $flag = $new_object->update('news', $data1, 'news_id', $id);

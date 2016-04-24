@@ -18,7 +18,7 @@ class cate_cla extends process {
 $cate_object = new cate_cla();
 
 
-$total_record = $cate_object->count('SELECT count(*) AS num_count FROM categories', 'num_count');
+
 if (isset($_POST['save'])) {
     $action = input_post('type_action');
     if ($action == 'Category_add') { /*--------------------------------------cai nay la phan them ban nhe--------*/

@@ -17,9 +17,6 @@ class new_cla extends process {
 
 $new_object = new new_cla();
 
-
-
-
 if (isset($_POST['save'])) {
     $action = input_post('type_action');
     if ($action == 'new_add') { /* --------------------------------------cai nay la phan them ban nhe-------- */
@@ -49,6 +46,7 @@ if (isset($_POST['save'])) {
             'news_description' => input_post('news_des'),
             'news_robots' => input_post('news_robots'),
             'created' => date('Y/m/d H:i:s', time()),
+            'add_userid' => $_SESSION['ss_user_token']['user_id'],
         );
 //        if (isset($path)) {
 //            $data['news_image'] = $path;
@@ -91,7 +89,6 @@ if (isset($_POST['save'])) {
 
 
         if (empty($error)) {
-            echo $data['news_slug'];
             $flag = $new_object->add('news', $data);
             if ($flag) {
                 echo '<script language="javascript">';

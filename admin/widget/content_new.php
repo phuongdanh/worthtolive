@@ -2,9 +2,9 @@
 if (!defined('SYSPATH'))
     die('Request not found!');
 require 'db/db_new.php';
-$total_record = $new_object->count('SELECT count(*) AS num_count FROM news', 'num_count');
+$total_record = $new_object->count('SELECT count(news_id) AS num_count FROM news', 'num_count');
 $current_page = input_get('page');
-$page = page($total_record, 10, $current_page, 'admin/index.php?action=news&page={page}');
+$page = page($total_record, 20, $current_page, 'admin/index.php?action=news&page={page}');
 $new_list = $new_object->get_list2($page['start'], $page['limit']);
 ?>
 
