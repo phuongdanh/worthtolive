@@ -48,9 +48,9 @@ if (isset($_POST['save'])) {
             'created' => date('Y/m/d H:i:s', time()),
             'add_userid' => $_SESSION['ss_user_token']['user_id'],
         );
-//        if (isset($path)) {
-//            $data['news_image'] = $path;
-//        }
+        if (isset($path)) {
+            $data['news_image'] = $path;
+        }
 //Xu lu validate du lieu
 
         if ($valid->valid_is_empty($data['news_title'])) {

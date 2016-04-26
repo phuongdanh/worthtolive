@@ -56,7 +56,16 @@ class process {
         }
         return 0;
     }
-
+    function count2($sql){
+        $this->connect();
+        $result = mysqli_query($this->_conn, $sql);
+        if (!$result) {// if The Query is wrong
+            die('The query is wrong count');
+        }else{
+            $rowcount = mysqli_num_rows($result);
+            return $rowcount - 1;
+        }
+    }
     //Ham show 1 row
     // Hàm lấy 1 record dùng trong trường hợp lấy chi tiết tin
     function get_row($sql) {

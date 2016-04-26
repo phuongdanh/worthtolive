@@ -62,7 +62,7 @@ $data = $new_object->get_row('SELECT * FROM news WHERE news_id = '.$news_id);
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Description</label>
                             <div class="col-sm-10">
-                                <textarea rows="5" name="news_des" placeholder="Description"  class="form-control"><?php echo $data['news_description'];?></textarea>
+                                <textarea rows="5" name="news_des" placeholder="Description" class="form-control"><?php echo $data['news_description'];?></textarea>
                             </div>
                         </div>
                         <div class="form-group">

@@ -9,7 +9,8 @@ $data = new process();
 
 
 
-/* Xu ly get Ip cua user*/
+/* Xu ly get Ip cua user */
+
 function getIp() {
     if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
         //check ip from share internet
@@ -23,15 +24,27 @@ function getIp() {
     return $ip;
 }
 
-
-function setViewed($ip,$news_viewed,$table,$id){
-    if(!isset($_COOKIE[$ip])){
-        setcookie($ip,$ip,+30);
+function setViewed($news_viewed, $table, $id, $data) {
+    if (!isset($_SESSION[$table . $id])) {
+        $_SESSION[$table . $id] = array(
+            'id' => $id,
+            'timeout' => time(),
+        );
         $news_viewed = $news_viewed + 1;
         $viewed = array(
             'news_viewed' => $news_viewed,
         );
-        $data->update($table,$viewed,'news_id',$id);
+        $data->update($table, $viewed, 'news_id', $id);
+    } elseif (time() - $_SESSION[$table . $id]['timeout'] > 7200) {
+        unset($_SESSION[$table . $id]);
+        $news_viewed = $news_viewed + 1;
+        $viewed = array(
+            'news_viewed' => $news_viewed,
+        );
+        $_SESSION[$table . $id] = array(
+            'id' => $id,
+            'timeout' => time(),
+        );
+        $data->update($table, $viewed, 'news_id', $id);
     }
-    
 }

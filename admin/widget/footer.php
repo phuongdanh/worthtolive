@@ -1,11 +1,11 @@
-   <script type="text/javascript"><!--
+<!--   <script type="text/javascript">
   $('#input-description1').summernote({
             height: 300
         });
         $('#input-content').summernote({
             height: 300
         });
-  //--></script> 
+  //</script> -->
     <script type="text/javascript"><!--
         $('input[name=\'path\']').autocomplete({
             'source': function (request, response) {

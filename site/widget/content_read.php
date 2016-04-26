@@ -11,8 +11,12 @@ if($current_news == null){
 }else{
     $table = 'news_users';
 }
-$ip = getIp();
-setViewed($ip, $current_news['news_viewed'], $table, $current_news['news_id']);
+
+setViewed($current_news['news_viewed'], $table, $current_news['news_id'],$data);
+//unset($_SESSION['count_viewed']);
+//if(!isset($_SESSION['count_viewed'])){
+//    echo 'Da huy Session';
+//}
 ?>
 <div class="clr"></div>
 <div class="content_wrapper">
