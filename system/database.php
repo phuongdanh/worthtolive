@@ -60,7 +60,7 @@ class process {
         $this->connect();
         $result = mysqli_query($this->_conn, $sql);
         if (!$result) {// if The Query is wrong
-            die('The query is wrong count');
+            die('The query is wrong');
         }else{
             $rowcount = mysqli_num_rows($result);
             return $rowcount - 1;

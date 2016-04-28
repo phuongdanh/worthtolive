@@ -106,7 +106,12 @@ setViewed($current_news['news_viewed'], $table, $current_news['news_id'],$data);
                 <div class="col-md-11 col-sm-10 col-xs-9">
                     <span>Duong kien</span><br>
                     <i>Date: 15/12/2016</i>
-                    <p>Pathankot is a lesson for many: 1) Pak army and ISI - that they cannot play rogue indefinitely. 2) Pak Government - that it cannot continue to remain subdued by its military. 3) People of Pakistan - that they cannot sacrifice the future of their children by allowing terrorists and rogue military to run their country. 4) India - that there is no alternative to remaining firm against terror and random aggression at borders. 5) Remote world powers - that India understands their role in creating trouble ...</p>
+                    <p>Pathankot is a lesson for many: 1) Pak army and ISI - that they cannot play rogue 
+                        indefinitely. 2) Pak Government - that it cannot continue to remain subdued by its military. 3)
+                        People of Pakistan - that they cannot sacrifice the future of their children by 
+                        allowing terrorists and rogue military to run their country. 4) India - that there is 
+                        no alternative to remaining firm against terror and random aggression at borders. 5) 
+                        Remote world powers - that India understands their role in creating trouble ...</p>
                 </div>
             </div>
             <div class="row list">
@@ -114,7 +119,14 @@ setViewed($current_news['news_viewed'], $table, $current_news['news_id'],$data);
                 <div class="col-md-11 col-sm-10 col-xs-9">
                     <span>Duong kien</span><br>
                     <i>Date: 15/12/2016</i>
-                    <p>Pathankot is a lesson for many: 1) Pak army and ISI - that they cannot play rogue indefinitely. 2) Pak Government - that it cannot continue to remain subdued by its military. 3) People of Pakistan - that they cannot sacrifice the future of their children by allowing terrorists and rogue military to run their country. 4) India - that there is no alternative to remaining firm against terror and random aggression at borders. 5) Remote world powers - that India understands their role in creating trouble ...</p>
+                    <p>Pathankot is a lesson for many: 1) 
+                        Pak army and ISI - that they cannot play rogue indefinitely. 2) 
+                        Pak Government - that it cannot continue to remain subdued by its military. 3) 
+                        People of Pakistan - that they cannot sacrifice the future of their children by 
+                        allowing terrorists and rogue military to run their country. 4) 
+                        India - that there is no alternative to remaining firm against terror and 
+                        random aggression at borders. 5) Remote world powers - that 
+                        India understands their role in creating trouble ...</p>
                 </div>
             </div>
         </div>

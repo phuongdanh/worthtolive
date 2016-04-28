@@ -3,7 +3,8 @@
     load_widget_header('header_about');
     load_toper();
     load_menu();
-    load_content('content_about');
     load_login();
+    load_content('content_about');
+    
     load_footer();
 ?>

@@ -2,9 +2,9 @@
 <?php
 load_widget_header('header_subcribe');
     load_toper();
-    load_menu();
+    load_menu(); load_login();
     load_content('content_subcribe');
-    load_login();
+   
     load_footer();
 ?>
 
