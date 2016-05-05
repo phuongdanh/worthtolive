@@ -9,7 +9,7 @@
 class new_cla extends process {
 
     function get_list2($start, $limit) {
-        $new_list = $this->get_list("SELECT * FROM news ORDER BY news_id DESC LIMIT $start, $limit");
+        $new_list = $this->get_list("SELECT * FROM news ORDER BY created DESC LIMIT $start, $limit");
         return $new_list;
     }
 

@@ -2,8 +2,8 @@
 <?php
     load_widget_header('header_general');
     load_toper();
-    load_menu();
+    load_menu();load_login();
     load_content('content_movie');
-    load_login();
+    
     load_footer();
 ?>

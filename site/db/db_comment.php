@@ -10,6 +10,7 @@ class comment extends process {
      
     function get_list_comment($news_id){
         $list_comment = $this->get_list("SELECT * FROM comments WHERE news_id = ".$news_id);
+        return $list_comment;
     }
     
 };
@@ -23,7 +24,7 @@ if(isset($_POST['comment_button'])){
         'news_id' => input_post('news_id'),
         'add_user_id' => $_SESSION['ss_user_token']['user_id'],
         'add_username' => $_SESSION['ss_user_token']['username'],
-        'add_datetime' => time(),
+        'add_datetime' => date('Y/m/d H:i:s', time()),
     );
     $send = $comment_object->add('comments', $data_comment);
     if(!$send){

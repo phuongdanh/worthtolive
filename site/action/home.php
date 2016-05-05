@@ -10,7 +10,8 @@
     load_widget_header('header_home');
     load_toper();
     load_menu();
-    load_content('content_home');
     load_login();
+    load_content('content_home');
+    
     load_footer();
 ?>

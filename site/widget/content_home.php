@@ -346,12 +346,13 @@ $my_news = $data->get_list("SELECT news_id, news_title, news_slug, news_image FR
                                     <i><?php echo $most_read['created'];?></i><br>
                                     <span><?php
                                         if (strlen($most_read['news_title']) > 38) {
-                                            echo substr($most_read['news_title'], 0, 55).'...'.$most_read['news_viewed'];
+                                            echo substr($most_read['news_title'], 0, 55).'...';
                                         } else {
-                                            echo $most_read['news_title'].$most_read['news_viewed'];
+                                            echo $most_read['news_title'];
                                         }
                                         ?></span>
                                     <a href="index.php?action=read&slug=<?php echo $most_read['news_slug']; ?>">READ MORE</a>
+                                    <br><i><?php echo $most_read['news_viewed'].' view'; ?></i>
                                     <hr>
                                 </div>
                                 <?php

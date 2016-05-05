@@ -1,4 +1,5 @@
 <?php if(!defined('SYSPATH'))die ('Request not found!'); ?>
+<div class="clr"></div>
 <div class="footer_wrapper">
     <div class="menu_footer">
         <ul class="list-inline">
@@ -18,7 +19,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="clr"></div>
-            <span>Copyright 2011 The News Reporter Inc. All rights reserved. Theme designed by GraphicsFuel.com<br>
+            <span>Copyright &copy; 2011 The News Reporter Inc. All rights reserved. Theme designed by GraphicsFuel.com<br>
                 Reproduction in whole or in part in any form or medium without express written permission of The News Reporter Inc. is prohibited. The trade marks and images used in the design are the copyright of their respective owners. They are used only for display purpose.</span>
         </div>
     </div>
