@@ -17,12 +17,15 @@ setViewed($current_news['news_viewed'], $table, $current_news['news_id'],$data);
 //if(!isset($_SESSION['count_viewed'])){
 //    echo 'Da huy Session';
 //}
+
+$cate_id = $current_news['cate_id'];
+$relate_news = $data->get_row("SELECT * FROM news WHERE cate_id = ".$cate_id);
 ?>
 <div class="clr"></div>
 <div class="content_wrapper">
     <div class="col-md-8 col-sm-12 content_left">
         <span class="title">
-            <?php echo $current_news['news_title']; ?>
+            <?php echo $current_news['news_title']; unset($current_news['news_title']);?>
         </span>
         <i class="date">15th Jan 2016</i>
         <hr>
@@ -41,12 +44,15 @@ setViewed($current_news['news_viewed'], $table, $current_news['news_id'],$data);
         <div class="col-md-12 relate">
             <span>Relate</span>
             <ul class="list">
-                <li><a href="#">Stalled India-Pakistan talks to figure in Sharif-Obama meeting</a></li>
-                <li><a href="#">Pathankot attack: Pakistan acts on India 'leads', arrests some suspec...</a></li>
-                <li><a href="#">US wants Pakistan to act fast against Pathankot attack perpetrators</a></li>
-                <li><a href="#">Pathankot attack: Sushma meets ex-envoys to Pakistan</a></li>
-                <li><a href="#">India-Pakistan talks have potential to benefit J&K, says PDP</a></li>
-                <li><a href="#">Pathankot attack: Credible information that plot hatched in Pakistan,...</a></li>
+                <?php 
+                foreach ($relate_news as $value) { ?>
+                    <li><a href="#"><?php echo $value["news_title"]; ?></a></li>
+                
+                <?php     
+                    }
+                ?>
+<!--                <li><a href="#">Stalled India-Pakistan talks to figure in Sharif-Obama meeting</a></li>-->
+                
             </ul>
             <div class="row line_relate">
                 <div class="col-md-3  col-sm-3 col-xs-6 item">
