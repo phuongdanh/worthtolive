@@ -63,7 +63,7 @@ class process {
             die('The query is wrong');
         }else{
             $rowcount = mysqli_num_rows($result);
-            return $rowcount - 1;
+            return $rowcount;
         }
     }
     //Ham show 1 row
@@ -143,5 +143,8 @@ class process {
         $sql = "SELECT * FROM users where user_name = '{$username}'";
         return $this->get_row($sql);
     }
-
+    function get_list_new($table,$field){
+        $list_new = $this->get_list("SELECT * FROM ".$table." WHERE ".$field." = 0");
+        return $list_new;
+    }
 }

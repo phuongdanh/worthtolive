@@ -23,8 +23,7 @@ setViewed($current_news['news_viewed'], $table, $current_news['news_id'],$data);
     <div class="col-md-8 col-sm-12 content_left">
         <span class="title">
             <?php echo $current_news['news_title']; ?>
-           
-        </span><br>
+        </span>
         <i class="date">15th Jan 2016</i>
         <hr>
         <div class="social">
@@ -89,13 +88,19 @@ setViewed($current_news['news_viewed'], $table, $current_news['news_id'],$data);
         <div class="clr"></div>
         
         <!-- Xu ly add comment -->
+        <?php
+        $user = $data->get_row("SELECT * FROM users WHERE user_id = ".$_SESSION['ss_user_token']['user_id']); 
+        //Hien tai $user_image la mot mang, nen chung ta phao tach no ra
+        $user_image = $user['user_avatar'];
+        $user_name = $user['user_name'];
         
+        ?>
         <div class="col-md-12 comment">
             <span>3 comments</span>
             <form method="post" action="">
                 <div class="row">
                     <div class="form-group">
-                        <div class="col-md-2 col-sm-2 col-xs-3"><img src="<?php echo $pathforsite; ?>images/img_27.jpg" class="img-rounded" height="50px" width="50px"><p class="name">Duong kien</p></div>
+                        <div class="col-md-2 col-sm-2 col-xs-3"><img src="<?php echo $user_image; ?>" class="img-rounded" height="50px" width="50px"><p class="name"><?php echo $user_name; ?></p></div>
                         <div class="col-md-10 col-sm-10 col-xs-9">
                             <input value="<?php echo $current_news['news_id']; ?>" name="news_id" type="hidden">
                             <textarea name="comment_content" placeholder="Add your comment...." required="You must enter your comment!" class="form-control" rows="4"></textarea>
@@ -110,32 +115,19 @@ setViewed($current_news['news_viewed'], $table, $current_news['news_id'],$data);
             <!-- Xu ly phan comment -->
             <?php 
             require_once 'site/db/db_comment.php';
+            $list_comment = $comment_object->get_list_comment($current_news['news_id']);
             ?>
             <div class="row list">
-                <div class="col-md-1 col-sm-2 col-xs-3"><img src="<?php echo $pathforsite; ?>images/img_27.jpg" class="img-rounded" height="50px" width="50px"></div>
+                <?php foreach($list_comment as $comment): ?>
+                <?php $user_image = $data->get_row("SELECT user_avatar FROM users WHERE user_id = ".$comment['add_user_id']); ?>
+                <div class="col-md-1 col-sm-2 col-xs-3"><img src="<?php echo $user_image['user_avatar']; ?>" class="img-rounded" height="50px" width="50px"></div>
                 <div class="col-md-11 col-sm-10 col-xs-9">
-                    <span>Duong kien</span><br>
-                    <i>Date: 15/12/2016</i>
+                    <span><?php echo $comment['add_username']; ?></span><br>
+                    <i>Date: <?php echo $comment['add_datetime']; ?></i>
 
-                    <p>Pathankot is a lesson for many: 1) Pak army and ISI - that they cannot play rogue 
-                        indefinitely. 2) Pak Government - that it cannot continue to remain subdued by its military. 3)
-                        People of Pakistan - that they cannot sacrifice the future of their children by 
-                        allowing terrorists and rogue military to run their country. 4) India - that there is 
-                        no alternative to remaining firm against terror and random aggression at borders. 5) 
-                        Remote world powers - that India understands their role in creating trouble ...</p>
-
-                    <p>Pathankot is a lesson for many: 1) 
-                        Pak army and ISI - that they cannot play rogue indefinitely. 2) 
-                        Pak Government - that it cannot continue to remain subdued by its
-                        military. 3) People of Pakistan - that they cannot 
-                        sacrifice the future of their children by allowing terrorists 
-                        and rogue military to run their country. 4) India - that there is 
-                        no alternative to remaining firm against terror and random aggression 
-                        at borders. 5) Remote world powers - that India understands their role in 
-                        creating trouble ...
-                    </p>
-
+                    <p><?php echo $comment['comment_content'];?></p>
                 </div>
+                <?php endforeach;?>
             </div>
             
         </div>

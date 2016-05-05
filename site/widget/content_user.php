@@ -8,7 +8,9 @@ $error = array();
 $valid = new valid();
 require_once 'site/db/db_user.php';
 require_once 'site/db/db_news_users.php';
-$news = $new_object->get_list("SELECT news_id, news_title, news_slug, cate_id, cate_title, cate_slug, created FROM news_users WHERE add_userid = " . $_SESSION['ss_user_token']['user_id']);
+
+if(isset($_SESSION['ss_user_token'])){
+    $news = $new_object->get_list("SELECT news_id, news_title, news_slug, cate_id, cate_title, cate_slug, created FROM news_users WHERE add_userid = " . $_SESSION['ss_user_token']['user_id']);
 $categories = $new_object->get_list("SELECT cate_id, cate_title FROM categories");
 $user = $user_object->get_row("SELECT * FROM users WHERE user_name = '" . $_SESSION['ss_user_token']['username'] . "'");
 ?>
@@ -252,3 +254,8 @@ $user = $user_object->get_row("SELECT * FROM users WHERE user_name = '" . $_SESS
     </div>
     <div class="clr"></div>
 </div>
+<?php 
+}else{
+   echo  "<meta http-equiv=\"refresh\" content=\"0;URL=index.php?action=home\">";
+}
+?>
