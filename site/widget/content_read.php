@@ -89,17 +89,21 @@ setViewed($current_news['news_viewed'], $table, $current_news['news_id'],$data);
         
         <!-- Xu ly add comment -->
         <?php
-        $user = $data->get_row("SELECT * FROM users WHERE user_id = ".$_SESSION['ss_user_token']['user_id']); 
-        //Hien tai $user_image la mot mang, nen chung ta phao tach no ra
-        $user_image = $user['user_avatar'];
-        $user_name = $user['user_name'];
+        if(isset($_SESSION['ss_user_token'])){
+            $user = $data->get_row("SELECT * FROM users WHERE user_id = ".$_SESSION['ss_user_token']['user_id']); 
+            //Hien tai $user_image la mot mang, nen chung ta phao tach no ra
+            $user_image = $user['user_avatar'];
+            $user_name = $user['user_name'];
+        }
+        
         
         ?>
         <div class="col-md-12 comment">
-            <span>3 comments</span>
+            <span>Top comments</span>
             <form method="post" action="">
                 <div class="row">
-                    <div class="form-group">
+                    <?php if(isset($_SESSION['ss_user_token'])){ ?>
+                        <div class="form-group">
                         <div class="col-md-2 col-sm-2 col-xs-3"><img src="<?php echo $user_image; ?>" class="img-rounded" height="50px" width="50px"><p class="name"><?php echo $user_name; ?></p></div>
                         <div class="col-md-10 col-sm-10 col-xs-9">
                             <input value="<?php echo $current_news['news_id']; ?>" name="news_id" type="hidden">
@@ -107,6 +111,10 @@ setViewed($current_news['news_viewed'], $table, $current_news['news_id'],$data);
                             <button name="comment_button" type="submit" class="btn btn-danger" style="width: 100%">Send</button>
                         </div>
                     </div>
+                    <?php }else{ ?>
+                    <div class="col-md-5"><p>You must login to comment &nbsp;&nbsp;<a href="#"  data-toggle="modal"  class="btn btn-danger" data-target="#myModal">Login</a></p></div>
+                    <?php } ?>
+                    
                     <div class="clr"></div>
                 </div>
             </form>
