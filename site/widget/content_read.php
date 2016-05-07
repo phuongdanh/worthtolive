@@ -1,31 +1,34 @@
-<?php if (!defined('SYSPATH')) die('Request not found!');
-$pathforsite = 'http://localhost/worthtolive/public/site/'; ?>
+<?php
+if (!defined('SYSPATH'))
+    die('Request not found!');
+$pathforsite = 'http://localhost/worthtolive/public/site/';
+?>
 <?php
 require_once 'site/db/db_read.php';
 $news_slug = input_get('slug');
-$current_news = $data->get_row("SELECT * FROM news_users WHERE news_slug = '".$news_slug."'");
+$current_news = $data->get_row("SELECT * FROM news_users WHERE news_slug = '" . $news_slug . "'");
 
-if($current_news == null){
-    $current_news = $data->get_row("SELECT * FROM news WHERE news_slug = '".$news_slug."'");
+if ($current_news == null) {
+    $current_news = $data->get_row("SELECT * FROM news WHERE news_slug = '" . $news_slug . "'");
     $table = 'news';
-}else{
+} else {
     $table = 'news_users';
 }
 
-setViewed($current_news['news_viewed'], $table, $current_news['news_id'],$data);
+setViewed($current_news['news_viewed'], $table, $current_news['news_id'], $data);
 //unset($_SESSION['count_viewed']);
 //if(!isset($_SESSION['count_viewed'])){
 //    echo 'Da huy Session';
 //}
-
-$cate_id = $current_news['cate_id'];
-$relate_news = $data->get_row("SELECT * FROM news WHERE cate_id = ".$cate_id);
 ?>
 <div class="clr"></div>
 <div class="content_wrapper">
     <div class="col-md-8 col-sm-12 content_left">
         <span class="title">
-            <?php echo $current_news['news_title']; unset($current_news['news_title']);?>
+            <?php
+            echo $current_news['news_title'];
+            unset($current_news['news_title']);
+            ?>
         </span>
         <i class="date">15th Jan 2016</i>
         <hr>
@@ -38,165 +41,241 @@ $relate_news = $data->get_row("SELECT * FROM news WHERE cate_id = ".$cate_id);
         </div>
         <div class="read">
             <img src="<?php echo $current_news['news_image']; ?>" width="60%">
-            <p><?php echo $current_news['news_content'];?></p>
+            <p><?php echo $current_news['news_content']; ?></p>
             <div class="clr"></div>
         </div>
         <div class="col-md-12 relate">
             <span>Relate</span>
             <ul class="list">
-                <?php 
-                foreach ($relate_news as $value) { ?>
-                    <li><a href="#"><?php echo $value["news_title"]; ?></a></li>
-                
-                <?php     
+                <?php
+                $cate_id = $current_news['cate_id'];
+                $i = 0;
+                $relate_news = $data->get_list("SELECT * FROM news WHERE cate_id = " . $cate_id . " ORDER BY news_viewed DESC");
+                foreach ($relate_news as $value) {
+                    if ($i == 6) {
+                        break;
                     }
+                    ?>
+                    <li><a href="index.php?action=read&slug=<?php echo $value['news_slug']; ?>"><?php
+                            if (is_array($value)) {
+                                echo $value["news_title"];
+                            }
+                            ?></a></li>
+
+                    <?php
+                    $i++;
+                }
                 ?>
-<!--                <li><a href="#">Stalled India-Pakistan talks to figure in Sharif-Obama meeting</a></li>-->
-                
+                <!--                <li><a href="#">Stalled India-Pakistan talks to figure in Sharif-Obama meeting</a></li>-->
+
             </ul>
             <div class="row line_relate">
-                <div class="col-md-3  col-sm-3 col-xs-6 item">
-                    <img src="<?php echo $pathforsite; ?>images/img_27.jpg">
-                    <span><a href="#">Lorem ipsum dolor sit amet, consectetur</a></span>
-                </div>
-                <div class="col-md-3 col-sm-3 col-xs-6 item">
-                    <img src="<?php echo $pathforsite; ?>images/img_28.jpg">
-                    <span><a href="#">Lorem ipsum dolor sit amet, consectetur</a></span>
-                </div>
-                <div class="col-md-3 col-sm-3 col-xs-6 item">
-                    <img src="<?php echo $pathforsite; ?>images/img_29.jpg">
-                    <span><a href="#">Lorem ipsum dolor sit amet, consectetur</a></span>
-                </div>
-                <div class="col-md-3 col-sm-3 col-xs-6  item">
-                    <img src="<?php echo $pathforsite; ?>images/img_39.jpg">
-                    <span><a href="#">Lorem ipsum dolor sit amet, consectetur</a></span>
-                </div>
-                <div class="col-md-3  col-sm-3 col-xs-6 item">
-                    <img src="http://img.v3.news.zdn.vn/w660/Uploaded/nutmjz/2014_02_25/my3Untitled.jpg">
-                    <span><a href="#">Lorem ipsum dolor sit amet, consectetur</a></span>
-                </div>
-                <div class="col-md-3  col-sm-3 col-xs-6 item">
-                    <img src="<?php echo $pathforsite; ?>images/img_36.jpg">
-                    <span><a href="#">Lorem ipsum dolor sit amet, consectetur</a></span>
-                </div>
-                <div class="col-md-3 col-sm-3  col-xs-6 item">
-                    <img src="<?php echo $pathforsite; ?>images/img_35.jpg">
-                    <span><a href="#">Lorem ipsum dolor sit amet, consectetur</a></span>
-                </div>
-                <div class="col-md-3  col-sm-3 col-xs-6 item">
-                    <img src="<?php echo $pathforsite; ?>images/img_27.jpg"s>
-                    <span><a href="#">Lorem ipsum dolor sit amet, consectetur</a></span>
-                </div>
+
+                <?php
+                $i = 0;
+
+                foreach ($relate_news as $value) {
+                    if ($i == 14) {
+                        break;
+                    }
+                    if ($i < 6) {
+                        
+                    } else {
+                        ?>
+                        <div class="col-md-3 col-sm-3 col-xs-6 item">
+                            <img src="<?php echo $value['news_image']; ?>">
+                            <span><a href="index.php?action=read&slug=<?php echo $value['news_slug']; ?>"><?php
+                                    if (strlen($value['news_title']) > 38) {
+                                        echo substr($value['news_title'], 0, 38);
+                                    } else {
+                                        echo $value['news_title'];
+                                    }
+                                    ?> ...</a></span>
+                        </div>
+
+                        <?php
+                    }
+
+                    $i++;
+                }
+                ?>
+
+
+
+
+                <!--                <div class="col-md-3  col-sm-3 col-xs-6 item">
+                                    <img src="images/img_27.jpg">
+                                    <span><a href="#">Lorem ipsum dolor sit amet, consectetur</a></span>
+                                </div>-->
+
                 <div class="clr"></div>
             </div>
 
         </div>
         <div class="clr"></div>
-        
+
         <!-- Xu ly add comment -->
         <?php
-        if(isset($_SESSION['ss_user_token'])){
-            $user = $data->get_row("SELECT * FROM users WHERE user_id = ".$_SESSION['ss_user_token']['user_id']); 
+        if (isset($_SESSION['ss_user_token'])) {
+            $user = $data->get_row("SELECT * FROM users WHERE user_id = " . $_SESSION['ss_user_token']['user_id']);
             //Hien tai $user_image la mot mang, nen chung ta phao tach no ra
             $user_image = $user['user_avatar'];
             $user_name = $user['user_name'];
         }
-        
-        
         ?>
         <div class="col-md-12 comment">
             <span>Top comments</span>
             <form method="post" action="">
                 <div class="row">
-                    <?php if(isset($_SESSION['ss_user_token'])){ ?>
+                    <?php if (isset($_SESSION['ss_user_token'])) { ?>
                         <div class="form-group">
-                        <div class="col-md-2 col-sm-2 col-xs-3"><img src="<?php echo $user_image; ?>" class="img-rounded" height="50px" width="50px"><p class="name"><?php echo $user_name; ?></p></div>
-                        <div class="col-md-10 col-sm-10 col-xs-9">
-                            <input value="<?php echo $current_news['news_id']; ?>" name="news_id" type="hidden">
-                            <textarea name="comment_content" placeholder="Add your comment...." required="You must enter your comment!" class="form-control" rows="4"></textarea>
-                            <button name="comment_button" type="submit" class="btn btn-danger" style="width: 100%">Send</button>
+                            <div class="col-md-2 col-sm-2 col-xs-3"><img src="<?php echo $user_image; ?>" class="img-rounded" height="50px" width="50px"><p class="name"><?php echo $user_name; ?></p></div>
+                            <div class="col-md-10 col-sm-10 col-xs-9">
+                                <input value="<?php echo $current_news['news_id']; ?>" name="news_id" type="hidden">
+                                <textarea name="comment_content" placeholder="Add your comment...." required="You must enter your comment!" class="form-control" rows="4"></textarea>
+                                <button name="comment_button" type="submit" class="btn btn-danger" style="width: 100%">Send</button>
+                            </div>
                         </div>
-                    </div>
-                    <?php }else{ ?>
-                    <div class="col-md-5"><p>You must login to comment &nbsp;&nbsp;<a href="#"  data-toggle="modal"  class="btn btn-danger" data-target="#myModal">Login</a></p></div>
+                    <?php } else { ?>
+                        <div class="col-md-5"><p>You must login to comment &nbsp;&nbsp;<a href="#"  data-toggle="modal"  class="btn btn-danger" data-target="#myModal">Login</a></p></div>
                     <?php } ?>
-                    
+
                     <div class="clr"></div>
                 </div>
             </form>
             <hr>
-            
+
             <!-- Xu ly phan comment -->
-            <?php 
+            <?php
             require_once 'site/db/db_comment.php';
             $list_comment = $comment_object->get_list_comment($current_news['news_id']);
             ?>
             <div class="row list">
-                <?php foreach($list_comment as $comment): ?>
-                <?php $user_image = $data->get_row("SELECT user_avatar FROM users WHERE user_id = ".$comment['add_user_id']); ?>
-                <div class="col-md-1 col-sm-2 col-xs-3"><img src="<?php echo $user_image['user_avatar']; ?>" class="img-rounded" height="50px" width="50px"></div>
-                <div class="col-md-11 col-sm-10 col-xs-9">
-                    <span><?php echo $comment['add_username']; ?></span><br>
-                    <i>Date: <?php echo $comment['add_datetime']; ?></i>
+                <?php foreach ($list_comment as $comment): ?>
+                    <?php $user_image = $data->get_row("SELECT user_avatar FROM users WHERE user_id = " . $comment['add_user_id']); ?>
+                    <div class="col-md-1 col-sm-2 col-xs-3"><img src="<?php echo $user_image['user_avatar']; ?>" class="img-rounded" height="50px" width="50px"></div>
+                    <div class="col-md-11 col-sm-10 col-xs-9">
+                        <span><?php echo $comment['add_username']; ?></span><br>
+                        <i>Date: <?php echo $comment['add_datetime']; ?></i>
 
-                    <p><?php echo $comment['comment_content'];?></p>
-                </div>
-                <?php endforeach;?>
+                        <p><?php echo $comment['comment_content']; ?></p>
+                    </div>
+                <?php endforeach; ?>
             </div>
-            
+
         </div>
     </div>
     <div class="col-md-4 col-sm-12 content_right">
         <span class="cate">Newest news</span><div class="clr"></div>
         <hr>
         <div class="list_item">
+            <?php
+            $newest_news = $data->get_list("SELECT * FROM news WHERE cate_id = " . $cate_id . " ORDER BY created DESC");
+            ?>
             <ul>
-                <li class="col-md-12 col-sm-4 col-xs-4">
-                    <img src="<?php echo $pathforsite; ?>images/most1.cms">
-                    <span><a href="#">Bajirao, Mastani triumph, Bhansali rules at Filmfare</a><br><i>&nbsp;&nbsp;&nbsp;Date: 12/31/2016</i></span>
-                    <div class="clr"></div>
-                </li>
-                <li class="col-md-12 col-sm-4 col-xs-4">
-                    <img src="<?php echo $pathforsite; ?>images/most2.jpg">
-                    <span><a href="#">Bajirao, Mastani triumph, Bhansali rules at Filmfare</a><br><i>&nbsp;&nbsp;&nbsp;Date: 12/31/2016</i></span>
-                    <div class="clr"></div>
-                </li>
-                <li class="col-md-12 col-sm-4 col-xs-4">
-                    <img src="<?php echo $pathforsite; ?>images/most3.cms">
-                    <span><a href="#">Bajirao, Mastani triumph, Bhansali rules at Filmfare</a><br><i>&nbsp;&nbsp;&nbsp;Date: 12/31/2016</i></span>
-                    <div class="clr"></div>
-                </li>
+                <?php
+                $i = 0;
+                foreach ($newest_news as $value) {
+                    if ($i == 3) {
+                        break;
+                    }
+                    ?>
+                    <li class="col-md-12 col-sm-4 col-xs-4">
+                        <img src="<?php echo $value['news_image']; ?>">
+                        <span><a href="index.php?action=read&slug=<?php echo $value['news_slug']; ?>"><?php
+                                if (strlen($value['news_title']) > 48) {
+                                    echo substr($value['news_title'], 0, 48);
+                                } else {
+                                    echo $value['news_title'];
+                                }
+                                ?> ...</a><br><i>&nbsp;&nbsp;&nbsp;Date: <?php echo $value['created']; ?></i></span>
+                        <div class="clr"></div>
+                    </li>
+
+                    <?php
+                    $i++;
+                }
+                ?>
+                <!--                
+                                <li class="col-md-12 col-sm-4 col-xs-4">
+                                    <img src="images/most1.cms">
+                                    <span><a href="#">Bajirao, Mastani triumph, Bhansali rules at Filmfare</a><br><i>&nbsp;&nbsp;&nbsp;Date: 12/31/2016</i></span>
+                                    <div class="clr"></div>
+                                </li> 3 lan-->
+
 
             </ul>
             <div class="clr"></div>
-            <div class="col-md-12 col-sm-6 col-xs-6 item">
-                <span><a href="#">Bajirao, Mastani triumph, Bhansali rules at Filmfare</a></span>
-                <img src="<?php echo $pathforsite; ?>images/most4.jpg">
-                <i>&nbsp;&nbsp;&nbsp;Date: 20/12/2016</i>
-            </div>
-            <div class="col-md-12 col-sm-6 col-xs-6 item">
-                <span><a href="#">Bajirao, Mastani triumph, Bhansali rules at Filmfare</a></span>
-                <img src="<?php echo $pathforsite; ?>images/most5.jpg">
-                <i>&nbsp;&nbsp;&nbsp;Date: 20/12/2016</i>
-            </div>
+
+            <?php
+            $i = 0;
+            foreach ($newest_news as $value) {
+                if ($i == 4) {
+                    break;
+                }
+                if ($i > 1) {
+                    ?>
+
+                    <div class="col-md-12 col-sm-6 col-xs-6 item">
+                        <span><a href="index.php?action=read&slug=<?php echo $value['news_slug']; ?>"><?php
+                                if (strlen($value['news_title']) > 48) {
+                                    echo substr($value['news_title'], 0, 48);
+                                } else {
+                                    echo $value['news_title'];
+                                }
+                                ?> ...</a>
+                        </span>
+                            <img src="<?php echo $value['news_image']; ?>">
+                            <i>&nbsp;&nbsp;&nbsp;Date: <?php echo $value['created']; ?></i>
+                    </div>
+
+                    <?php
+                }
+
+                $i++;
+            }
+            ?>
+
+
+            <!--            <div class="col-md-12 col-sm-6 col-xs-6 item">
+                            <span><a href="#">Bajirao, Mastani triumph, Bhansali rules at Filmfare</a></span>
+                            <img src="images/most4.jpg">
+                            <i>&nbsp;&nbsp;&nbsp;Date: 20/12/2016</i>
+                        </div>-->
+
             <div class="clr"></div>
             <ul>
-                <li  class="col-md-12 col-sm-4 col-xs-4">
-                    <img src="<?php echo $pathforsite; ?>images/most7.jpg">
+<!--                <li  class="col-md-12 col-sm-4 col-xs-4">
+                    <img src="images/most7.jpg">
                     <span><a href="#">Bajirao, Mastani triumph, Bhansali rules at Filmfare</a><br><i>&nbsp;&nbsp;&nbsp;Date: 12/31/2016</i></span>
                     <div class="clr"></div>
-                </li>
-                <li  class="col-md-12 col-sm-4 col-xs-4">
-                    <img src="<?php echo $pathforsite; ?>images/most8.jpg">
-                    <span><a href="#">Bajirao, Mastani triumph, Bhansali rules at Filmfare</a><br><i>&nbsp;&nbsp;&nbsp;Date: 12/31/2016</i></span>
-                    <div class="clr"></div>
-                </li>
-                <li  class="col-md-12 col-sm-4 col-xs-4">
-                    <img src="<?php echo $pathforsite; ?>images/most9.jpg">
-                    <span><a href="#">Bajirao, Mastani triumph, Bhansali rules at Filmfare</a><br><i>&nbsp;&nbsp;&nbsp;Date: 12/31/2016</i></span>
-                    <div class="clr"></div>
-                </li>
+                </li>-->
+                <?php
+                $i = 0;
+                foreach ($newest_news as $value) {
+                    if ($i == 12) {
+                        break;
+                    }
+                    if($i > 8){
+                        ?>
+                    <li class="col-md-12 col-sm-4 col-xs-4">
+                        <img src="<?php echo $value['news_image']; ?>">
+                        <span><a href="index.php?action=read&slug=<?php echo $value['news_slug']; ?>"><?php
+                                if (strlen($value['news_title']) > 48) {
+                                    echo substr($value['news_title'], 0, 48);
+                                } else {
+                                    echo $value['news_title'];
+                                }
+                                ?> ...</a><br><i>&nbsp;&nbsp;&nbsp;Date: <?php echo $value['created']; ?></i></span>
+                        <div class="clr"></div>
+                    </li>
 
+                    <?php
+                    }
+                    
+                    $i++;
+                }
+                ?>
             </ul>
 
         </div>
