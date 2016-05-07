@@ -3,7 +3,9 @@
        define('SYSPATH', 'system/');
        require SYSPATH.'client.php';
         $action = input_get('action');
-        
+        if(!$action){
+            $action='home';
+        }
         require SYSPATH.'site.php';
         require_once SYSPATH.'validate.php';
         require_once SYSPATH.'session.php';

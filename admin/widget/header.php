@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
     <head>
-        
+
         <meta charset="UTF-8" />
         <title>Admin - Worthtolive</title>
         <base href="http://localhost/worthtolive/" />
@@ -23,24 +23,25 @@
     </head>
     <body>
         <?php require_once 'db/for_admin.php'; ?>
+        
         <div id="container">
             <header id="header" class="navbar navbar-static-top">
                 <div class="navbar-header">
                     <a type="button" id="button-menu" class="pull-left"><i class="fa fa-indent fa-lg"></i></a>
                     <a href="" class="navbar-brand"><img src="public/admin/image/logo.png" alt="OpenCart" title="OpenCart" /></a></div>
                 <ul class="nav pull-right">
-                    <?php 
-                            $number_new_users = $object_new_things->count2("SELECT * FROM users WHERE user_status = 0");
-                            ?>
-                    <?php 
-                            $number_new_contacts = $object_new_things->count2("SELECT * FROM contacts WHERE contact_status = 0");
-                            $total_new = $number_new_users + $number_new_contacts;
-                            ?>
+                    <?php
+                    $number_new_users = $object_new_things->count2('SELECT * FROM users WHERE user_status = 0');
+                    ?>
+                    <?php
+                    $number_new_contacts = $object_new_things->count2('SELECT * FROM contacts WHERE contact_status = 0');
+                    $total_new = $number_new_users + $number_new_contacts;
+                    ?>
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><span class="label label-danger pull-left"><?php echo $total_new; ?></span> <i class="fa fa-bell fa-lg"></i></a>
                         <ul class="dropdown-menu dropdown-menu-right alerts-dropdown">
-                            
-                            <li><a href=""><span class="label label-success pull-right"><?php echo $number_new_users; ?></span>New users</a></li>
-                            
+
+                            <li><a href="admin/index.php?action=user"><span class="label label-success pull-right"><?php echo $number_new_users; ?></span>New users</a></li>
+
                             <li><a href="admin/index.php?action=contact"><span class="label label-danger pull-right"><?php echo $number_new_contacts; ?></span>New contacts</a></li>
                             <li><a href=""><span class="label label-danger pull-right">0</span>Pending approval</a></li>
                         </ul>
@@ -57,10 +58,10 @@
                         </ul>
                     </li>
                     <li>
-                        
-                            <?php $_SESSION['url'] = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";?>
-                            <a href="common/logout.php"><span class="hidden-xs hidden-sm hidden-md">Logout</span> <i class="fa fa-sign-out fa-lg"></i></a>
-                        
-                     </li>   
+
+                        <?php $_SESSION['url'] = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; ?>
+                        <a href="common/logout.php"><span class="hidden-xs hidden-sm hidden-md">Logout</span> <i class="fa fa-sign-out fa-lg"></i></a>
+
+                    </li>   
                 </ul>
             </header>

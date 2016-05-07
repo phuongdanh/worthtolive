@@ -2,37 +2,37 @@
 if (!defined('SYSPATH'))
     die('Request not found!');
 
-class contact_cla extends process {
+class user_cla extends process {
 
     function get_list2($start, $limit) {
-        $contact_list = $this->get_list("SELECT * FROM contacts ORDER BY contact_status ASC, created DESC LIMIT $start, $limit");
-        return $contact_list;
+        $user_list = $this->get_list("SELECT * FROM users ORDER BY user_status ASC, add_date_time DESC LIMIT $start, $limit");
+        return $user_list;
     }
 
 }
 
-$contact_object = new contact_cla();
+$user_object = new user_cla();
 
-$total_record = $contact_object->count('SELECT count(contact_id) AS num_count FROM contacts', 'num_count');
+$total_record = $user_object->count('SELECT count(user_id) AS num_count FROM users', 'num_count');
 $current_page = input_get('page');
-$page = page($total_record, 20, $current_page, 'admin/index.php?action=contact&page={page}');
-$contact_list = $contact_object->get_list2($page['start'], $page['limit']);
+$page = page($total_record, 20, $current_page, 'admin/index.php?action=user&page={page}');
+$user_list = $user_object->get_list2($page['start'], $page['limit']);
 ?>
 <?php
-if (isset($_GET['contact_id'])) {
-    $contact_id = input_get('contact_id');
-    $data = array('contact_status' => 1,);
-    $contact_object->update('contacts', $data, 'contact_id', $contact_id);
-    echo "<meta http-equiv=\"refresh\" content=\"0;URL=admin/index.php?action=contact\">";
+if (isset($_GET['user_id'])) {
+    $user_id = input_get('user_id');
+    $data = array('user_status' => 1,);
+    $user_object->update('users', $data, 'user_id', $user_id);
+    echo "<meta http-equiv=\"refresh\" content=\"0;URL=admin/index.php?action=user\">";
 }
 ?>
 <div class="container-fluid">
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title"><i class="fa fa-list"></i>Contact list</h3>
+            <h3 class="panel-title"><i class="fa fa-list"></i>User list</h3>
         </div>
         <div class="panel-body">
-            <form action="admin/index.php?action=contact_delete_multiple" method="post" enctype="multipart/form-data" id="form-contact">
+            <form action="admin/index.php?action=user_delete_multiple" method="post" enctype="multipart/form-data" id="form-user">
 
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover">
@@ -41,13 +41,13 @@ if (isset($_GET['contact_id'])) {
                                 <td style="width: 1px;" class="text-center">
                                     <input type="checkbox" onclick="$('input[name*=\'selected\']').prop('checked', this.checked);" /></td>
                                 <td class="text-left">                    
-                                    <a href="#" class="asc">Who</a>
+                                    <a href="#" class="asc">Username</a>
                                 </td>
                                 <td class="text-right">                    
                                     <a href="#">Email</a>
                                 </td>
                                 <td class="text-right">                    
-                                    <a href="#">Content</a>
+                                    <a href="#">Phone number</a>
                                 </td>
                                 <td class="text-right">                    
                                     <a href="#">Status</a>
@@ -57,25 +57,25 @@ if (isset($_GET['contact_id'])) {
                         </thead>
                         <tbody>
 
-                            <?php foreach ($contact_list as $contact): ?>
+                            <?php foreach ($user_list as $user): ?>
 
                                 <tr>
                                     <td class="text-center">                    
-                                        <input type="checkbox" name="checkbox[]" value="<?php echo $contact['contact_id']; ?>" />
+                                        <input type="checkbox" name="checkbox[]" value="<?php echo $user['user_id']; ?>" />
                                     </td>
-                                    <td class="text-left"><?php echo $contact['contact_name']; ?></td>
-                                    <td class="text-right"><?php echo $contact['contact_email']; ?></td>
-                                    <td class="text-left"><?php echo $contact['contact_content']; ?></td>
+                                    <td class="text-left"><?php echo $user['user_name']; ?></td>
+                                    <td class="text-right"><?php echo $user['user_email']; ?></td>
+                                    <td class="text-left"><?php echo $user['user_phone']; ?></td>
                                     <td class="text-right"><?php
-                                        if ($contact['contact_status'] == 0) {
-                                            echo 'Not yet';
+                                        if ($user['user_status'] == 0) {
+                                            echo 'New user';
                                         } else {
                                             echo 'Seen';
                                         }
                                         ?></td>
                                     <td class="text-right">
 
-                                        <a href="admin/index.php?action=contact&contact_id=<?php echo $contact['contact_id']; ?>" data-toggle="tooltip" title="Seen" class="btn btn-primary">
+                                        <a href="admin/index.php?action=user&user_id=<?php echo $user['user_id']; ?>" data-toggle="tooltip" title="Seen" class="btn btn-primary">
                                             <i class="fa fa-eye"></i>
                                         </a>
 

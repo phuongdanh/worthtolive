@@ -29,7 +29,7 @@ class process {
         $result = mysqli_query($this->_conn, $sql);
         $list = array();
         if (!$result) {// if The Query is wrong
-            die('The query is wrong');
+            die('The query is wrong_get_list');
         }
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $list[] = $row;
@@ -60,7 +60,7 @@ class process {
         $this->connect();
         $result = mysqli_query($this->_conn, $sql);
         if (!$result) {// if The Query is wrong
-            die('The query is wrong');
+            die('The query is wrong_count_2');
         }else{
             $rowcount = mysqli_num_rows($result);
             return $rowcount;
