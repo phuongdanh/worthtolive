@@ -43,9 +43,10 @@ $pathforsite = 'http://localhost/worthtolive/public/site/'; ?>
                             <img src="<?php echo $pathforsite; ?>images/comment.jpg"><span>3</span>
                         </a>
                     </div>
-                    <form class="form">
-                        <button><i class="fa fa-search"></i></button>
-                        <input class="" type="text">
+                    <form class="form" method="get" action="index.php">
+                        <button type="submit"><i class="fa fa-search"></i></button>
+                        <input type="hidden" value="search" name="action">
+                        <input class="" value="" name="key" type="text">
 
                     </form>
                 </div>

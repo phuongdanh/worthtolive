@@ -238,9 +238,6 @@ transform: rotate(360deg);
 .content_right .web{
 	margin-top: 20px;
 }
-.content_right .web .last{
-    margin-top: 20px;
-}
 .modal-content{
 	width: 400px;
 	margin:0 auto;
@@ -293,5 +290,25 @@ transform: rotate(360deg);
 }
 .footer_wrapper .menu_footer ul li a{
 	color: #020305;
+}
+
+
+.search .demuc{
+	font-size: 15px; 
+	font-weight: bold;
+	
+}
+.search .list li{
+	display: block;
+	margin-bottom: 30px;
+}
+.search .list li .title{
+	font-weight: bold;
+	font-size: 14px;
+        color: #333;
+}
+
+.search .list li img{
+	width: 100%;
 }
 
