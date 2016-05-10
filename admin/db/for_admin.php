@@ -10,4 +10,4 @@
 class object_new extends process{
 }
 
-$object_new_things = new object_new();
+

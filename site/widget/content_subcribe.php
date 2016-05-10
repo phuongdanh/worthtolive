@@ -1,7 +1,7 @@
 <?php
 if (!defined('SYSPATH'))
     die('Request not found!');
-$pathforsite = 'http://localhost/worthtolive/public/site/';
+$pathforsite = 'public/site/';
 $error = array();
 $valid = new valid();
 require 'site/db/db_user.php';

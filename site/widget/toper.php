@@ -1,5 +1,5 @@
 <?php if (!defined('SYSPATH')) die('Request not found!');
-$pathforsite = 'http://localhost/worthtolive/public/site/'; ?>
+$pathforsite = 'public/site/'; ?>
 
 <body>
     <div class="container_wrapper">

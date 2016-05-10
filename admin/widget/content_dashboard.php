@@ -1,10 +1,18 @@
-
+<?php
+class object_new2 extends process{
+    
+}
+$new_things = new object_new2(); 
+$number_new_users = $new_things->count2('SELECT * FROM users WHERE user_status = 0');
+$number_new_contacts = $new_things->count2('SELECT * FROM contacts WHERE contact_status = 0');
+$total_new = $number_new_users + $number_new_contacts;
+?>
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-6"><div class="tile">
                 <div class="tile-heading">New messages</div>
                 <div class="tile-body"><i class="fa fa-envelope"></i>
-                    <h2 class="pull-right">0</h2>
+                    <h2 class="pull-right"><?php echo $number_new_contacts; ?></h2>
                 </div>
                 <div class="tile-footer"><a href="admin/index.php?action=contact">View more...</a></div>
             </div>
@@ -20,7 +28,7 @@
         <div class="col-lg-3 col-md-3 col-sm-6"><div class="tile">
                 <div class="tile-heading">New users</div>
                 <div class="tile-body"><i class="fa fa-user"></i>
-                    <h2 class="pull-right">0</h2>
+                    <h2 class="pull-right"><?php echo $number_new_users; ?></h2>
                 </div>
                 <div class="tile-footer"><a href="admin/index.php?action=user">View more...</a></div>
             </div>

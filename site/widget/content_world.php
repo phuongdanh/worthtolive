@@ -1,7 +1,7 @@
 <?php
 if (!defined('SYSPATH'))
     die('Request not found!');
-$pathforsite = 'http://localhost/worthtolive/public/site/';
+$pathforsite = 'public/site/';
 ?>
 <?php
 require 'site/db/db_each_cate.php';

@@ -22,8 +22,8 @@
         <script src="public/ckeditor/sample.js" type="text/javascript"></script>
     </head>
     <body>
-        <?php require_once 'db/for_admin.php'; ?>
-        
+        <?php require 'db/for_admin.php'; ?>
+        <?php $object_new_things = new object_new(); ?>
         <div id="container">
             <header id="header" class="navbar navbar-static-top">
                 <div class="navbar-header">

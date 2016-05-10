@@ -53,12 +53,12 @@ and open the template in the editor.
         if (file_exists('action/' . $action . '.php')) {
             if (!isset($_SESSION['ss_user_token'])) {
                 $_SESSION['url'] = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
-                header('location: http://localhost/worthtolive/common/login.php');
+                header('location: ../common/login.php');
             } elseif ($_SESSION['ss_user_token']['level'] != 1) {
                 echo '<div class="not_admin">
 	<div class="container">
             <h1><span>X</span> you are not administrator</h1>
-            <p>You must to exit this page. Go to our <a href="http://localhost/worthtolive/index.php?action=home" title="">home page</a></p>
+            <p>You must to exit this page. Go to our <a href="../index.php?action=home" title="">home page</a></p>
 	</div>
         </div>
 ';

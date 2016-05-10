@@ -39,7 +39,7 @@
 	<div class="container">
             <h6>Don't worry you will be back on track in no time!</h6>
             <h1><span>404</span> error</h1>
-            <p>Page dont exist or some occured. Go to our <a href="#" title="">home page</a></p>
+            <p>Page dont exist or some occured. Go to our <a href="index.php?action=home" title="">home page</a></p>
 	</div>
 </body>
 </html>

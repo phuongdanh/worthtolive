@@ -1,4 +1,4 @@
-<?php if (!defined('SYSPATH')) die('Request not found!'); $pathforsite = 'http://localhost/worthtolive/public/site/'; ?>
+<?php if (!defined('SYSPATH')) die('Request not found!'); $pathforsite = 'public/site/'; ?>
 <!DOCTYPE html>
 <html>
     <head>

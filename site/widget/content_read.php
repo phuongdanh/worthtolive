@@ -1,7 +1,7 @@
 <?php
 if (!defined('SYSPATH'))
     die('Request not found!');
-$pathforsite = 'http://localhost/worthtolive/public/site/';
+$pathforsite = 'public/site/';
 ?>
 <?php
 require_once 'site/db/db_read.php';

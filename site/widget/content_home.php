@@ -3,7 +3,8 @@ if (!defined('SYSPATH'))
     die('Request not found!');
 $pathforsite = 'public/site/';
 $data = new process();
-$my_news = $data->get_list("SELECT news_id, news_title, news_slug, news_image FROM news_users");
+$my_news = $data->get_list("SELECT news_id, news_title, news_slug, news_image FROM news_users ORDER BY created DESC");
+$slide_news = $data->get_list("SELECT news_id, news_description, news_title,cate_title, news_slug, news_image FROM news ORDER BY created DESC");
 ?>
 <div class="clr"></div>
 <div class="slider_wrapper">
@@ -11,52 +12,41 @@ $my_news = $data->get_list("SELECT news_id, news_title, news_slug, news_image FR
         <div class="clr"></div>
         <div id="jssor_1" class = "jssor_1">
             <div data-u="slides" class="frame">
-                <div data-p="112.50" style="display: none;">
-                    <img data-u="image" src="<?php echo $pathforsite; ?>images/002.jpg" />
-                    <span>Lorem ipsum dolor sit amet, consectetur Nulla quis lorem neque, mattis venenatis lectus. </span>
-                    <div data-u="thumb">
-                        <img class="i" src="<?php echo $pathforsite; ?>images/thumb-002.jpg" />
-                        <div class="t">Banner Rotator</div>
-                        <a href="#"><div class="c">360+ touch swipe slideshow effects</div></a>
-                    </div>
-                </div>
-                <div data-p="112.50" style="display: none;">
-                    <img data-u="image" src="<?php echo $pathforsite; ?>images/003.jpg" />
-                    <span>Lorem ipsum dolor sit amet, consectetur Nulla quis 
-                        lorem neque, mattis venenatis lectus. </span>
-                    <div data-u="thumb">
-                        <img class="i" src="<?php echo $pathforsite; ?>images/thumb-003.jpg" />
-                        <div class="t">Image Gallery</div>
-                        <a href="#"><div class="c">Image gallery with thumbnail navigation</div></a>
-                    </div>
-                </div>
-                <div data-p="112.50" style="display: none;">
-                    <img data-u="image" src="<?php echo $pathforsite; ?>images/004.jpg" />
-                    <span>Lorem ipsum dolor sit amet, consectetur Nulla quis lorem neque, mattis venenatis lectus. </span>
-                    <div data-u="thumb">
-                        <img class="i" src="<?php echo $pathforsite; ?>images/thumb-004.jpg" />
-                        <div class="t">Carousel</div>
-                        <a href="#"><div class="c">Touch swipe, mobile device optimized</div></a>
-                    </div>
-                </div>
-                <div data-p="112.50" style="display: none;">
-                    <img data-u="image" src="<?php echo $pathforsite; ?>images/005.jpg" />
-                    <span>Lorem ipsum dolor sit amet, consectetur Nulla quis lorem neque, mattis venenatis lectus. </span>
-                    <div data-u="thumb">
-                        <img class="i" src="<?php echo $pathforsite; ?>images/thumb-005.jpg" />
-                        <div class="t">Themes</div>
-                        <a href="#"><div class="c">30+ professional themems + growing</div></a>
-                    </div>
-                </div>
-                <div data-p="112.50" style="display: none;">
-                    <img data-u="image" src="<?php echo $pathforsite; ?>images/006.jpg" />
-                    <span>Lorem ipsum dolor sit amet, consectetur Nulla quis lorem neque, mattis venenatis lectus. </span>
-                    <div data-u="thumb">
-                        <img class="i" src="<?php echo $pathforsite; ?>images/thumb-006.jpg" />
-                        <div class="t">Tab Slider</div>
-                        <a href="#"><div class="c">Tab slider with auto play options</div></a>
-                    </div>
-                </div>
+                <?php
+                $i = 0;
+                $j = 0;
+                foreach ($slide_news as $value) {
+                    if ($j == 5) {
+                        break;
+                    }if ($i % 3 == 0) {
+                        ?>
+                        <div data-p="112.50" style="display: none;">
+                            <img data-u="image" src="<?php echo $value['news_image']; ?>" />
+                            <a href="index.php?action=read&slug=<?php echo $value['news_slug'];?>"><span><?php echo substr($value['news_description'], 0, 88); ?> ...</span></a>
+                            <div data-u="thumb">
+                                <img class="i" src="<?php echo $value['news_image']; ?>" />
+                                <div class="t"><?php echo $value['cate_title']; ?></div>
+                                <a href="#"><div class="c"><?php echo substr($value['news_title'], 0, 34); ?> ...</div></a>
+                            </div>
+                        </div>
+                        <?php
+                        $j++;
+                    }
+                    $i++;
+                    
+                }
+                ?>
+                <!--                
+                                <div data-p="112.50" style="display: none;">
+                                    <img data-u="image" src="<?php echo $pathforsite; ?>images/002.jpg" />
+                                    <span>Lorem ipsum dolor sit amet, consectetur Nulla quis lorem neque, mattis venenatis lectus. </span>
+                                    <div data-u="thumb">
+                                        <img class="i" src="<?php echo $pathforsite; ?>images/thumb-002.jpg" />
+                                        <div class="t">Banner Rotator</div>
+                                        <a href="#"><div class="c">360+ touch swipe slideshow effects</div></a>
+                                    </div>
+                                </div>5 slide-->
+
             </div>
             <!-- Thumbnail Navigator -->
             <div data-u="thumbnavigator" class="jssort11" style="" data-autocenter="2">
@@ -76,14 +66,16 @@ $my_news = $data->get_list("SELECT news_id, news_title, news_slug, news_image FR
 
     <!-- Xu ly toi viet-->
     <div class="slider_right">
+        <?php $i = 0; ?>
         <?php foreach ($my_news as $news) { ?>
+        <?php if($i == 4){ break; }?>
             <div class="item">
                 <a href="index.php?action=read&slug=<?php echo $news['news_slug']; ?>">
                     <img src="<?php echo $news['news_image']; ?>" width="68px" height="46px">
-                    <span><?php echo $news['news_title']; ?></span>
+                    <span><?php echo substr($news['news_title'], 0,38); ?></span>
                 </a>
             </div>
-        <?php } ?>
+        <?php $i++; } ?>
 
 
         <a href="#"><img src="<?php echo $pathforsite; ?>images/more.png"></a>
@@ -107,7 +99,7 @@ $my_news = $data->get_list("SELECT news_id, news_title, news_slug, news_image FR
                         $i = 1;
                         foreach ($around_world as $around_world) {
                             ?>
-                            <div class="col-md-4 col-sm-4">
+                            <div class="col-md-4 col-sm-4 col-xs-4">
                                 <img src="<?php echo $around_world['news_image']; ?>">
                                 <span><?php
                                     if (strlen($around_world['news_title']) > 38) {
@@ -127,7 +119,7 @@ $my_news = $data->get_list("SELECT news_id, news_title, news_slug, news_image FR
                         }
                         ?>
                         <!--                        <div class="col-md-4 col-sm-4">
-                                                    <img src="<?php //echo $pathforsite;   ?>images/img_10.jpg">
+                                                    <img src="<?php //echo $pathforsite;        ?>images/img_10.jpg">
                                                     <span>Lorem ipsum dolor sit amet, consectetur</span>
                                                     <p>Nulla quis lorem neque, mattis venenatis lectus. In interdum ullamcorper dolor eu mattis.</p>
                                                     <a href="#">READ MORE</a>
@@ -145,7 +137,7 @@ $my_news = $data->get_list("SELECT news_id, news_title, news_slug, news_image FR
                         $i = 1;
                         foreach ($latest as $latest) {
                             ?>
-                            <div class="col-md-4 col-sm-4">
+                            <div class="col-md-4 col-sm-4 col-xs-4">
                                 <img src="<?php echo $latest['news_image']; ?>">
                                 <span><?php
                                     if (strlen($latest['news_title']) > 38) {
@@ -174,23 +166,23 @@ $my_news = $data->get_list("SELECT news_id, news_title, news_slug, news_image FR
                     <hr>
                     <div class="clr"></div>
                     <div class="items gallery">
-                        <div class="col-md-4 col-sm-4">
+                        <div class="col-md-4 col-sm-4 col-xs-4">
                             <a href="#"><img src="<?php echo $pathforsite; ?>images/img_27.jpg"></a>
                         </div>
-                        <div class="col-md-4 col-sm-4">
+                        <div class="col-md-4 col-sm-4 col-xs-4">
                             <a href="#"><img src="<?php echo $pathforsite; ?>images/img_28.jpg"></a>
                         </div>
-                        <div class="col-md-4 col-sm-4">
+                        <div class="col-md-4 col-sm-4 col-xs-4">
                             <a href="#"><img src="<?php echo $pathforsite; ?>images/img_29.jpg"></a>
                         </div>
                         <div class="clr"></div>
-                        <div class="col-md-4 col-sm-4">
+                        <div class="col-md-4 col-sm-4 col-xs-4">
                             <a href="#"><img src="<?php echo $pathforsite; ?>images/img_39.jpg"></a>
                         </div>
-                        <div class="col-md-4 col-sm-4">
+                        <div class="col-md-4 col-sm-4 col-xs-4">
                             <a href="#"><img src="<?php echo $pathforsite; ?>images/img_35.jpg"></a>
                         </div>
-                        <div class="col-md-4 col-sm-4">
+                        <div class="col-md-4 col-sm-4 col-xs-4">
                             <a href="#"><img src="<?php echo $pathforsite; ?>images/img_36.jpg"></a>
                         </div>
                     </div>
@@ -343,16 +335,16 @@ $my_news = $data->get_list("SELECT news_id, news_title, news_slug, news_image FR
                             foreach ($most_read as $most_read) {
                                 ?>
                                 <div class="col-md-12 col-sm-6 item">
-                                    <i><?php echo $most_read['created'];?></i><br>
+                                    <i><?php echo $most_read['created']; ?></i><br>
                                     <span><?php
                                         if (strlen($most_read['news_title']) > 38) {
-                                            echo substr($most_read['news_title'], 0, 55).'...';
+                                            echo substr($most_read['news_title'], 0, 55) . '...';
                                         } else {
                                             echo $most_read['news_title'];
                                         }
                                         ?></span>
                                     <a href="index.php?action=read&slug=<?php echo $most_read['news_slug']; ?>">READ MORE</a>
-                                    <br><i><?php echo $most_read['news_viewed'].' view'; ?></i>
+                                    <br><i><?php echo $most_read['news_viewed'] . ' view'; ?></i>
                                     <hr>
                                 </div>
                                 <?php

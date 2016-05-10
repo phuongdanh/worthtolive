@@ -22,6 +22,10 @@ body{
 .container_wrapper{
     width: 100%;
 }
+.content_left article .items img{
+    width: 100%;
+    height: auto;
+}
 }
 /*-------------------------------------------header---------------*/
 
@@ -154,6 +158,10 @@ body{
 	color: #cf0000;
 	font-size: 10px;
 	font-weight: bold;
+}
+.content_left article .items img{
+    width: 147px;
+    height: 100px;
 }
 .content_left article .col-md-4 img{
 	width: 100%;

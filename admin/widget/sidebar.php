@@ -8,8 +8,12 @@
                     </div>
                 </div>
                 <ul id="menu">
-                    <li id="dashboard"><a href="http://localhost/opencart/upload/admin/index.php?route=common/dashboard&amp;token=dvy2kdt7YtpYXM0k4oGvNtz6peFuPRsJ"><i class="fa fa-dashboard fa-fw"></i> <span>Dashboard</span></a></li>
-                    <li id="catalog"><a class="parent"><i class="fa fa-tags fa-fw"></i> <span>Catalog</span></a>
+                    <li id="dashboard"><a href="admin/index.php?action=home"><i class="fa fa-dashboard fa-fw"></i> <span>Dashboard</span></a></li>
+                    <li id="dashboard"><a href="admin/index.php?action=category"><i class="fa fa-tags fa-fw"></i> <span>Categories</span></a></li>
+                    <li id="dashboard"><a href="admin/index.php?action=news"><i class="fa fa-newspaper-o fa-fw"></i> <span>News</span></a></li>
+                    <li id="dashboard"><a href="admin/index.php?action=contact"><i class="fa fa-envelope fa-fw"></i> <span>Messages</span></a></li>
+                    <li id="dashboard"><a href="admin/index.php?action=user"><i class="fa fa-user fa-fw"></i> <span>User</span></a></li>
+<!--                    <li id="catalog"><a class="parent"><i class="fa fa-tags fa-fw"></i> <span>Catalog</span></a>
                         <ul>
                             <li><a href="http://localhost/opencart/upload/admin/index.php?route=catalog/category&amp;token=dvy2kdt7YtpYXM0k4oGvNtz6peFuPRsJ">Categories</a></li>
                             <li><a href="http://localhost/opencart/upload/admin/index.php?route=catalog/filter&amp;token=dvy2kdt7YtpYXM0k4oGvNtz6peFuPRsJ">Filters</a></li>
@@ -22,15 +26,15 @@
                             <li><a href="http://localhost/opencart/upload/admin/index.php?route=catalog/option&amp;token=dvy2kdt7YtpYXM0k4oGvNtz6peFuPRsJ">Options</a></li>
                             <li><a href="http://localhost/opencart/upload/admin/index.php?route=catalog/information&amp;token=dvy2kdt7YtpYXM0k4oGvNtz6peFuPRsJ">Information</a></li>
                         </ul>
-                    </li>
+                    </li>-->
                    
-                    <li id="design"><a class="parent"><i class="fa fa-television fa-fw"></i> <span>Design</span></a>
+<!--                    <li id="design"><a class="parent"><i class="fa fa-television fa-fw"></i> <span>Design</span></a>
                         <ul>
-                            <li><a href="http://localhost/opencart/upload/admin/index.php?route=design/layout&amp;token=dvy2kdt7YtpYXM0k4oGvNtz6peFuPRsJ">Layouts</a></li>
+                            <li><a href="admin/index.php?acion=news">News</a></li>
                             <li><a href="http://localhost/opencart/upload/admin/index.php?route=design/banner&amp;token=dvy2kdt7YtpYXM0k4oGvNtz6peFuPRsJ">Banners</a></li>
                         </ul>
-                    </li>
-                    <li id="sale"><a class="parent"><i class="fa fa-shopping-cart fa-fw"></i> <span>Sales</span></a>
+                    </li>-->
+<!--                    <li id="sale"><a class="parent"><i class="fa fa-shopping-cart fa-fw"></i> <span>Sales</span></a>
                         <ul>
                             <li><a href="http://localhost/opencart/upload/admin/index.php?route=sale/order&amp;token=dvy2kdt7YtpYXM0k4oGvNtz6peFuPRsJ">Orders</a></li>
                            <li><a href="http://localhost/opencart/upload/admin/index.php?route=sale/return&amp;token=dvy2kdt7YtpYXM0k4oGvNtz6peFuPRsJ">Returns</a></li>
@@ -46,7 +50,7 @@
                                 </ul>
                             </li>
                         </ul>
-                    </li>
+                    </li>-->
                     
                     <li id="system"><a class="parent"><i class="fa fa-cog fa-fw"></i> <span>System</span></a>
                         <ul>

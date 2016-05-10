@@ -1,5 +1,5 @@
 <?php if (!defined('SYSPATH')) die('Request not found!');
-    $pathforsite = 'http://localhost/worthtolive/public/site/';
+    $pathforsite = 'public/site/';
 ?>
 <div class="footer_wrapper">
     <div class="menu_footer">
