@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Tôi thích</title>
+        <title>Worth to live</title>
         <meta charset="utf-8"></meta>
         <link rel="stylesheet" type="text/css" href="<?php echo $pathforsite; ?>css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="<?php echo $pathforsite; ?>css/menu.css">
@@ -14,6 +14,6 @@
         <script type="text/javascript" src="<?php echo $pathforsite; ?>js/jssor.slider.mini.js"></script>
         <script type="text/javascript" src="<?php echo $pathforsite; ?>js/slider.js"></script>
         <script type="text/javascript" src="<?php echo $pathforsite; ?>js/custome.js"></script>
-
+        <link rel="icon" href="public/site/images/icon.png" type="image/png" sizes="16x16">
     </head>
     

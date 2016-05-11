@@ -54,18 +54,18 @@
                     
                     <li id="system"><a class="parent"><i class="fa fa-cog fa-fw"></i> <span>System</span></a>
                         <ul>
-                            <li><a href="http://localhost/opencart/upload/admin/index.php?route=setting/store&amp;token=dvy2kdt7YtpYXM0k4oGvNtz6peFuPRsJ">Settings</a></li>
+                            <li><a href="">Settings</a></li>
                             <li><a class="parent">Users</a>
                                 <ul>
-                                    <li><a href="http://localhost/opencart/upload/admin/index.php?route=user/api&amp;token=dvy2kdt7YtpYXM0k4oGvNtz6peFuPRsJ">API</a></li>
+                                    <li><a href="">API</a></li>
                                 </ul>
                             </li>
                             <li><a class="parent">Localisation</a>
                                 <ul>
-                                    <li><a href="http://localhost/opencart/upload/admin/index.php?route=localisation/order_status&amp;token=dvy2kdt7YtpYXM0k4oGvNtz6peFuPRsJ">Order Statuses</a></li>
+                                    <li><a href="">Order Statuses</a></li>
                                     <li><a class="parent">Returns</a>
                                         <ul>
-                                            <li><a href="http://localhost/opencart/upload/admin/index.php?route=localisation/return_reason&amp;token=dvy2kdt7YtpYXM0k4oGvNtz6peFuPRsJ">Return Reasons</a></li>
+                                            <li><a href="">Return Reasons</a></li>
                                         </ul>
                                     </li>
                                 </ul>
@@ -78,8 +78,8 @@
                             
                             <li><a class="parent">Products</a>
                                 <ul>
-                                    <li><a href="http://localhost/opencart/upload/admin/index.php?route=report/product_viewed&amp;token=dvy2kdt7YtpYXM0k4oGvNtz6peFuPRsJ">Viewed</a></li>
-                                    <li><a href="http://localhost/opencart/upload/admin/index.php?route=report/product_purchased&amp;token=dvy2kdt7YtpYXM0k4oGvNtz6peFuPRsJ">Purchased</a></li>
+                                    <li><a href="">Viewed</a></li>
+                                    <li><a href="">Purchased</a></li>
                                 </ul>
                             </li>
                             

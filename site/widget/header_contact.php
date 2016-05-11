@@ -13,6 +13,6 @@
         <script type="text/javascript" src="<?php echo $pathforsite; ?>js/jquery.js"></script>
         <script type="text/javascript" src="<?php echo $pathforsite; ?>js/bootstrap.js"></script>
         <script type="text/javascript" src="<?php echo $pathforsite; ?>js/custome.js"></script>
-
+        <link rel="icon" href="public/site/images/icon.png" type="image/png" sizes="16x16">
     </head>
   

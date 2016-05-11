@@ -20,6 +20,7 @@
         <script src="public/admin/javascript/common.js" type="text/javascript"></script>
         <script src="public/ckeditor/ckeditor.js" type="text/javascript"></script>
         <script src="public/ckeditor/sample.js" type="text/javascript"></script>
+        <link rel="icon" href="http://phuongdanh.890m.com/public/site/images/icon.png" type="image/png" sizes="16x16">
     </head>
     <body>
         <?php require 'db/for_admin.php'; ?>
@@ -49,7 +50,7 @@
                     <li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-life-ring fa-lg"></i></a>
                         <ul class="dropdown-menu dropdown-menu-right">
                             <li class="dropdown-header">Stores <i class="fa fa-shopping-cart"></i></li>
-                            <li><a href="http://localhost/opencart/upload/" target="_blank">Your Store</a></li>
+                            <li><a href="" target="_blank">Your Store</a></li>
                             <li class="divider"></li>
                             <li class="dropdown-header">Help <i class="fa fa-life-ring"></i></li>
                             <li><a href="http://www.opencart.com" target="_blank">Homepage</a></li>

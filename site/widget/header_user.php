@@ -13,4 +13,5 @@
         <script type="text/javascript" src="<?php echo $pathforsite; ?>js/custome.js"></script>
         <script src="public/ckeditor/ckeditor.js" type="text/javascript"></script>
         <script src="public/ckeditor/sample.js" type="text/javascript"></script>
+        <link rel="icon" href="public/site/images/icon.png" type="image/png" sizes="16x16">
     </head>
