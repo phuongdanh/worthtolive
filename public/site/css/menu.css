@@ -29,7 +29,6 @@ header .logo{
 	margin-top: 20px;
 }
 header .search{
-	text-align:right;
         width: 30%;
 }
 header .search a{
@@ -60,11 +59,27 @@ header .search button{
 	padding-right: 10px;
 
 }
-@media (max-width: 500px){
-	header .search input{
-	width: 200px; 
-	height: 28px;
+
+@media (max-width: 962px){
+    header .search input{
+        width: 200px; 
+        height: 28px;
+        float: left;
+    }
+    header .search button{
+        float: left;
+    }
 }
+
+@media (max-width: 500px){
+    header .search input{
+        width: 200px; 
+        height: 28px;
+        float: left;
+    }
+    header .search button{
+        float: left;
+    }
 }
 header .menu{
 	text-align: right;

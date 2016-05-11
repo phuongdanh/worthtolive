@@ -5,10 +5,10 @@ $pathforsite = 'public/site/'; ?>
     <div class="container_wrapper">
         <header>
             <div class="row">
-                <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="col-md-3 col-sm-12 col-xs-12">
                     <img src="<?php echo $pathforsite; ?>images/logo.png">
                 </div>
-                <div class="col-md-5 col-sm-6 col-xs-12 menu">
+                <div class="col-md-5 col-sm-12 col-xs-12 menu">
                     <ul>
                         <li><a href="index.php?action=home">Home</a></li>
                         <li><a href="index.php?action=about">About Us</a></li>
@@ -26,7 +26,7 @@ $pathforsite = 'public/site/'; ?>
                         
                  </ul>
                 </div>
-                <div class="col-md-4 col-sm-12 search">
+                <div class="col-md-4 col-sm-12 col-xs-12 search">
                     <div><a href="http://facebook.com/danhchutich/">
                             <img src="<?php echo $pathforsite; ?>images/facebook.png">
                         </a>
